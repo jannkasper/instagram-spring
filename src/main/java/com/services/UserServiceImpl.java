@@ -1,6 +1,6 @@
 package com.services;
 
-import com.api.domain.Profile;
+import com.api.domain.UserData;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,19 +11,19 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
-public class PostServiceImpl implements PostService {
+public class UserServiceImpl implements UserService {
 
     private RestTemplate restTemplate;
 
     private final String api_url;
 
-    public PostServiceImpl(RestTemplate restTemplate, @Value("${api.url}") String api_url) {
+    public UserServiceImpl(RestTemplate restTemplate, @Value("${api.url}") String api_url) {
         this.restTemplate = restTemplate;
         this.api_url = api_url;
     }
 
     @Override
-    public Profile getPosts() {
+    public UserData getUserMedia() {
         String responseEntity = restTemplate.getForObject(api_url, String.class);
 
         Pattern pattern = Pattern.compile("<script type=\"text/javascript\">window.__additionalDataLoaded\\('feed',(.*)\\);</script>", Pattern.DOTALL);
@@ -32,15 +32,15 @@ public class PostServiceImpl implements PostService {
             responseEntity = matcher.group(1);
         }
 
-        Profile profile;
+        UserData userData;
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         try {
-            profile =  mapper.readValue(responseEntity, Profile.class);
+            userData =  mapper.readValue(responseEntity, UserData.class);
         } catch (Exception e) {
             return null;
         }
 
-        return profile;
+        return userData;
     }
 }

@@ -1,8 +1,8 @@
 package com.services;
 
-import com.api.domain.Tag;
+import com.api.domain.GraphqlData;
 
 public interface TagService {
 
-    Tag getTag(String tag);
+    GraphqlData getTag(String tag);
 }

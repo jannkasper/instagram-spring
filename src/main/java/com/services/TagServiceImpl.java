@@ -1,6 +1,6 @@
 package com.services;
 
-import com.api.domain.Tag;
+import com.api.domain.GraphqlData;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -20,14 +20,14 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public Tag getTag(String name) {
+    public GraphqlData getTag(String name) {
 
         UriComponents uriComponents = UriComponentsBuilder
                 .fromUriString(api_url)
                 .path("/explore/tags/{name}/?__a=1")
                 .buildAndExpand(name);
 
-        Tag responseEntity = restTemplate.getForObject(uriComponents.toUriString(), Tag.class);
+        GraphqlData responseEntity = restTemplate.getForObject(uriComponents.toUriString(), GraphqlData.class);
 
         return responseEntity;
     }

@@ -1,22 +1,22 @@
 
 package com.api.domain;
 
-import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.Map;
+import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Profile {
+public class GraphqlData {
 
-    private User user;
+    private Graphql graphql;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public User getUser() {
-        return user;
+    public Graphql getGraphql() {
+        return graphql;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setGraphql(Graphql graphql) {
+        this.graphql = graphql;
     }
 
     public Map<String, Object> getAdditionalProperties() {

@@ -1,6 +1,6 @@
 package com.controllers;
 
-import com.api.domain.Tag;
+import com.api.domain.GraphqlData;
 import com.services.TagService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -21,7 +21,7 @@ public class TagController {
 
     @GetMapping("{name}")
     @ResponseStatus(HttpStatus.OK)
-    public Tag getTagByName(@PathVariable String name) {
+    public GraphqlData getTagByName(@PathVariable String name) {
         return tagService.getTag(name);
     }
 }

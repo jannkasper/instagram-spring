@@ -1,7 +1,7 @@
 package com.controllers;
 
-import com.api.domain.Profile;
-import com.services.PostService;
+import com.api.domain.UserData;
+import com.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,15 +16,15 @@ public class PostController {
 
     public static final String BASE_URL = "/api/posts";
 
-    private PostService postService;
+    private UserService userService;
 
-    public PostController(PostService postService) {
-        this.postService = postService;
+    public PostController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public Profile getProfileFeed() {
-        return postService.getPosts();
+    public UserData getProfileFeed() {
+        return userService.getUserMedia();
     }
 }
