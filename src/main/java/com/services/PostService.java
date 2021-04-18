@@ -1,6 +1,6 @@
 package com.services;
 
-import com.api.domain.profile.Profile;
+import com.api.domain.Profile;
 
 public interface PostService {
 

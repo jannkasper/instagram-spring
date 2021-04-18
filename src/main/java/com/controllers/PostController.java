@@ -1,6 +1,6 @@
 package com.controllers;
 
-import com.api.domain.profile.Profile;
+import com.api.domain.Profile;
 import com.services.PostService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

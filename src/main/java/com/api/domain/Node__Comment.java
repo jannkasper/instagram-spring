@@ -1,12 +1,12 @@
 
-package com.api.domain.profile;
+package com.api.domain;
 
+import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Node__3 {
+public class Node__Comment {
 
     private String id;
     private String text;

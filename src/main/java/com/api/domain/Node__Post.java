@@ -1,5 +1,5 @@
 
-package com.api.domain.profile;
+package com.api.domain;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.Map;
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Node {
+public class Node__Post {
 
     private String __typename;
     private String id;
@@ -49,6 +49,10 @@ public class Node {
     private String video_url;
     private Integer video_view_count;
     private Object clips_music_attribution_info;
+    private Edge_media_to_comment edge_media_to_comment;
+    private Edge_liked_by edge_liked_by;
+    private String thumbnail_src;
+    private List<Thumbnail_resource> thumbnail_resources = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String get__typename() {
@@ -379,4 +383,35 @@ public class Node {
         this.additionalProperties.put(name, value);
     }
 
+    public Edge_media_to_comment getEdge_media_to_comment() {
+        return edge_media_to_comment;
+    }
+
+    public void setEdge_media_to_comment(Edge_media_to_comment edge_media_to_comment) {
+        this.edge_media_to_comment = edge_media_to_comment;
+    }
+
+    public Edge_liked_by getEdge_liked_by() {
+        return edge_liked_by;
+    }
+
+    public void setEdge_liked_by(Edge_liked_by edge_liked_by) {
+        this.edge_liked_by = edge_liked_by;
+    }
+
+    public String getThumbnail_src() {
+        return thumbnail_src;
+    }
+
+    public void setThumbnail_src(String thumbnail_src) {
+        this.thumbnail_src = thumbnail_src;
+    }
+
+    public List<Thumbnail_resource> getThumbnail_resources() {
+        return thumbnail_resources;
+    }
+
+    public void setThumbnail_resources(List<Thumbnail_resource> thumbnail_resources) {
+        this.thumbnail_resources = thumbnail_resources;
+    }
 }

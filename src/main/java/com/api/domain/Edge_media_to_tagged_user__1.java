@@ -1,22 +1,23 @@
 
-package com.api.domain.profile;
+package com.api.domain;
 
-import java.util.HashMap;
-import java.util.Map;
 import javax.annotation.Generated;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Generated("jsonschema2pojo")
-public class Edge__1 {
+public class Edge_media_to_tagged_user__1 {
 
-    private Node__1 node;
+    private List<Object> edges = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public Node__1 getNode() {
-        return node;
+    public List<Object> getEdges() {
+        return edges;
     }
 
-    public void setNode(Node__1 node) {
-        this.node = node;
+    public void setEdges(List<Object> edges) {
+        this.edges = edges;
     }
 
     public Map<String, Object> getAdditionalProperties() {

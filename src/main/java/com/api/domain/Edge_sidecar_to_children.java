@@ -1,22 +1,22 @@
 
-package com.api.domain.profile;
+package com.api.domain;
 
+import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
 public class Edge_sidecar_to_children {
 
-    private List<Edge> edges = null;
+    private List<Edge__Post> edges = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public List<Edge> getEdges() {
+    public List<Edge__Post> getEdges() {
         return edges;
     }
 
-    public void setEdges(List<Edge> edges) {
+    public void setEdges(List<Edge__Post> edges) {
         this.edges = edges;
     }
 

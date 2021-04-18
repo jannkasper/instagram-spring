@@ -1,22 +1,22 @@
 
-package com.api.domain.profile;
+package com.api.domain;
 
+import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Edge__2 {
+public class Profile {
 
-    private Node__2 node;
+    private User user;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public Node__2 getNode() {
-        return node;
+    public User getUser() {
+        return user;
     }
 
-    public void setNode(Node__2 node) {
-        this.node = node;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Map<String, Object> getAdditionalProperties() {

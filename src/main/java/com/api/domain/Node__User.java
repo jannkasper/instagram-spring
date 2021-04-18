@@ -1,14 +1,16 @@
 
-package com.api.domain.profile;
+package com.api.domain;
 
+import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Profile {
+public class Node__User {
 
     private User user;
+    private Double x;
+    private Double y;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public User getUser() {
@@ -17,6 +19,22 @@ public class Profile {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Double getX() {
+        return x;
+    }
+
+    public void setX(Double x) {
+        this.x = x;
+    }
+
+    public Double getY() {
+        return y;
+    }
+
+    public void setY(Double y) {
+        this.y = y;
     }
 
     public Map<String, Object> getAdditionalProperties() {

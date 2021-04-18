@@ -11,7 +11,7 @@ public class Edge_hashtag_to_media {
 
     private Integer count;
     private Page_info page_info;
-    private List<Edge> edges = null;
+    private List<Edge__Post> edges = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public Integer getCount() {
@@ -30,11 +30,11 @@ public class Edge_hashtag_to_media {
         this.page_info = page_info;
     }
 
-    public List<Edge> getEdges() {
+    public List<Edge__Post> getEdges() {
         return edges;
     }
 
-    public void setEdges(List<Edge> edges) {
+    public void setEdges(List<Edge__Post> edges) {
         this.edges = edges;
     }
 

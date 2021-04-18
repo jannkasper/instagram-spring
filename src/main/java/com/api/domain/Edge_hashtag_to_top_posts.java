@@ -9,14 +9,14 @@ import javax.annotation.Generated;
 @Generated("jsonschema2pojo")
 public class Edge_hashtag_to_top_posts {
 
-    private List<Edge> edges = null;
+    private List<Edge__Post> edges = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public List<Edge> getEdges() {
+    public List<Edge__Post> getEdges() {
         return edges;
     }
 
-    public void setEdges(List<Edge> edges) {
+    public void setEdges(List<Edge__Post> edges) {
         this.edges = edges;
     }
 

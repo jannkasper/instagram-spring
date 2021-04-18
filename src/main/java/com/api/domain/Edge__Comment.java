@@ -1,21 +1,21 @@
 
 package com.api.domain;
 
+import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Edge {
+public class Edge__Comment {
 
-    private Node node;
+    private Node__Comment node;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public Node getNode() {
+    public Node__Comment getNode() {
         return node;
     }
 
-    public void setNode(Node node) {
+    public void setNode(Node__Comment node) {
         this.node = node;
     }
 

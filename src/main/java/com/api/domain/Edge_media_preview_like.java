@@ -2,6 +2,7 @@
 package com.api.domain;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
 
@@ -9,6 +10,7 @@ import javax.annotation.Generated;
 public class Edge_media_preview_like {
 
     private Integer count;
+    private List<Object> edges = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public Integer getCount() {
@@ -27,4 +29,11 @@ public class Edge_media_preview_like {
         this.additionalProperties.put(name, value);
     }
 
+    public List<Object> getEdges() {
+        return edges;
+    }
+
+    public void setEdges(List<Object> edges) {
+        this.edges = edges;
+    }
 }

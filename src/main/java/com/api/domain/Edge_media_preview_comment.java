@@ -1,17 +1,17 @@
 
-package com.api.domain.profile;
+package com.api.domain;
 
+import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
 public class Edge_media_preview_comment {
 
     private Integer count;
     private Page_info page_info;
-    private List<Edge__3> edges = null;
+    private List<Edge__Comment> edges = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public Integer getCount() {
@@ -30,11 +30,11 @@ public class Edge_media_preview_comment {
         this.page_info = page_info;
     }
 
-    public List<Edge__3> getEdges() {
+    public List<Edge__Comment> getEdges() {
         return edges;
     }
 
-    public void setEdges(List<Edge__3> edges) {
+    public void setEdges(List<Edge__Comment> edges) {
         this.edges = edges;
     }
 
