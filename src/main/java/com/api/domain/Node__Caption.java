@@ -2,22 +2,21 @@
 package com.api.domain;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class EdgeMediaToCaption {
+public class Node__Caption {
 
-    private List<EdgeCaption> edges = null;
+    private String text;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public List<EdgeCaption> getEdges() {
-        return edges;
+    public String getText() {
+        return text;
     }
 
-    public void setEdges(List<EdgeCaption> edges) {
-        this.edges = edges;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public Map<String, Object> getAdditionalProperties() {

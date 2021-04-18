@@ -9,14 +9,14 @@ import javax.annotation.Generated;
 @Generated("jsonschema2pojo")
 public class Edge_media_to_caption {
 
-    private List<EdgeCaption> edges = null;
+    private List<Edge__Caption> edges = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public List<EdgeCaption> getEdges() {
+    public List<Edge__Caption> getEdges() {
         return edges;
     }
 
-    public void setEdges(List<EdgeCaption> edges) {
+    public void setEdges(List<Edge__Caption> edges) {
         this.edges = edges;
     }
 

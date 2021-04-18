@@ -6,17 +6,17 @@ import java.util.Map;
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class NodeCaption {
+public class Edge__Caption {
 
-    private String text;
+    private Node__Caption node;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public String getText() {
-        return text;
+    public Node__Caption getNode() {
+        return node;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setNode(Node__Caption node) {
+        this.node = node;
     }
 
     public Map<String, Object> getAdditionalProperties() {
