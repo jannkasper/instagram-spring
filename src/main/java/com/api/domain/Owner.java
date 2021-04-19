@@ -13,6 +13,7 @@ public class Owner {
     private String username;
     private Boolean followed_by_viewer;
     private String full_name;
+    private Boolean is_verified;
     private Boolean is_private;
     private Boolean requested_by_viewer;
     private Boolean blocked_by_viewer;
@@ -66,6 +67,14 @@ public class Owner {
 
     public void setFull_name(String full_name) {
         this.full_name = full_name;
+    }
+
+    public Boolean getIs_verified() {
+        return is_verified;
+    }
+
+    public void setIs_verified(Boolean is_verified) {
+        this.is_verified = is_verified;
     }
 
     public Boolean getIs_private() {

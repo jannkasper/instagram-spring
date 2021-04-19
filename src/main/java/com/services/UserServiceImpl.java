@@ -1,11 +1,17 @@
 package com.services;
 
+import com.api.domain.GraphqlData;
 import com.api.domain.UserData;
+import com.api.domain.profile.Profile;
+import com.commands.UserCommand;
+import com.converters.UserToUserCommand;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -43,4 +49,46 @@ public class UserServiceImpl implements UserService {
 
         return userData;
     }
+
+    @Override
+    public UserCommand getUserMediaCommand() {
+        UserData userData = getUserMedia();
+
+        if (userData == null) {
+            return null;
+        }
+
+        UserToUserCommand converter = new UserToUserCommand();
+        UserCommand userCommand = converter.convert(userData.getUser());
+        return userCommand;
+    }
+
+//    @Override
+//    public GraphqlData getUser(String username) {
+//        UriComponents uriComponents = UriComponentsBuilder
+//                .fromUriString(api_url)
+//                .path("/{username}")
+//                .buildAndExpand(username);
+//
+//        String responseEntity = restTemplate.getForObject(uriComponents.toUriString(), String.class);
+//
+//        Pattern pattern = Pattern.compile("<script type=\"text/javascript\">window\\._sharedData = (.*);</script>\n<script type=\"text/javascript\">window.__initialDataLoaded\\(window._sharedData\\);</script>", Pattern.DOTALL);
+//        Matcher matcher = pattern.matcher(responseEntity);
+//        while (matcher.find()) {
+//            responseEntity = matcher.group(1);
+//        }
+//
+//        Profile userData;
+//        ObjectMapper mapper = new ObjectMapper()
+//                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+//        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+//        try {
+//            userData =  mapper.readValue(responseEntity, Profile.class);
+//        } catch (Exception e) {
+//            System.out.println(e.toString());
+//            return null;
+//        }
+//
+//        return null;
+//    }
 }
