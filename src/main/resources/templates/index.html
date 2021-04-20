@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Instagram - Spring</title>
+
+    <link th:href="@{/css/default.css}" rel="stylesheet" />
+    <link th:href="@{/css/layout.css}" rel="stylesheet" />
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+</head>
+<body>
+<th:block th:replace="fragments/header :: headerPanel"></th:block>
+
+<main th:class="mainContainer">
+    <th:block th:insert="fragments/feedPost :: feedPost" th:each="post : ${userData.postArray}" th:with="post=${post}"></th:block>
+</main>
+
+</body>
+</html>

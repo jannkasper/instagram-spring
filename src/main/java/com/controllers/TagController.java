@@ -19,9 +19,9 @@ public class TagController {
         this.tagService = tagService;
     }
 
-    @GetMapping("{name}")
-    @ResponseStatus(HttpStatus.OK)
-    public GraphqlData getTagByName(@PathVariable String name) {
-        return tagService.getTag(name);
-    }
+//    @GetMapping("{name}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public GraphqlData getTagByName(@PathVariable String name) {
+//        return tagService.getTag(name);
+//    }
 }
