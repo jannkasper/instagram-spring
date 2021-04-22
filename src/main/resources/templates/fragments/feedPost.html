@@ -12,12 +12,12 @@
     <th:block th:insert="fragments/feedPost :: video" th:if="${post.isVideo == true && post.isSidecar == false}" th:with="videoUrl=${post.videoUrl}"></th:block>
     <th:block th:insert="fragments/feedPost :: sidecar" th:if="${post.isVideo == false && post.isSidecar == true}" th:with="sidecarArray=${post.sidecarArray}, shortcode=${post.shortcode}"></th:block>
     <th:block th:insert="fragments/feedPost :: actions" th:with="likes=${post.likes}"></th:block>
-    <th:block th:insert="fragments/feedPost :: comment" th:with="owner=${post.owner}, text=${post.description}, feedDescription=${true}"></th:block>
+    <th:block th:insert="fragments/feedPost :: comment" th:with="owner=${post.owner}, text=${post.description}, id=${post.shortcode}, feedDescription=${true}"></th:block>
     <a th:class="viewAllComments" th:text="${'View all ' + @formatter.numCommaFormatter(post.commentsData.count) + ' comments'}"></a>
     <th:block th:insert="fragments/feedPost :: comment"
               th:if="${post.commentsData?.commentsArray}"
               th:each="comment : ${post.commentsData.commentsArray}"
-              th:with="owner=${comment.owner}, text=${comment.text}, feedDescription=${false}">
+              th:with="owner=${comment.owner}, text=${comment.text}, id=${comment.id}, feedDescription=${false}">
     </th:block>
     <a th:class="itemDateText" th:text="${@formatter.dateFormatter(post.createdAt)}"></a>
     <th:block th:replace="fragments/feedPost :: addComment"></th:block>
@@ -180,14 +180,25 @@
 
     <div th:class="commentContent">
         <a th:class="commentUserName" th:text="${owner.username}">username</a>
-        <span th:text="${text.length > 120 ? text.substring(0, text.lastIndexOf(' ', 120)) + '...' : text}"></span>
-        <span th:if="${text.length > 120}" th:class="showMore"> more</span>
+        <span th:id="${'comment-' + id}" th:text="${text.length > 120 ? text.substring(0, text.lastIndexOf(' ', 120)) + '...' : text}"></span>
+        <span th:id="${'commentShowMore-' + id}" th:if="${text.length > 120}" th:class="showMore" th:attr="onclick='handleShowMore(\'' + ${id} + '\', `' + ${text} + '`)'"> more</span>
     </div>
     <div th:if="${feedDescription != true}">
         <svg aria-label="Like" fill="#262626" height="12" viewBox="0 0 48 48" width="12">
             <path d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path>
         </svg>
     </div>
+
+    <script th:inline="javascript">
+        function handleShowMore (id, text) {
+            console.log(id, text)
+            var comment = document.getElementById("comment-" + id);
+            comment.textContent = text;
+
+            var commentShowMore = document.getElementById("commentShowMore-" + id);
+            commentShowMore.style.display = "none";
+        }
+    </script>
 </div>
 
 </body>
