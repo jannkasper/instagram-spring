@@ -54,7 +54,7 @@
     background-position: -130px -98px;
     height: 30px;
     width: 30px;
-    background-image: url("../../../static/images/icons2.png");
+    background-image: url("../../images/icons2.png");
 }
 
 .nextSlide {
@@ -75,7 +75,7 @@
     background-position: -162px -98px;
     height: 30px;
     width: 30px;
-    background-image: url("../../../static/images/icons2.png");
+    background-image: url("../../images/icons2.png");
 }
 
 .previousSlideImage {

@@ -8,7 +8,9 @@
     <link th:href="@{/css/feedPost.css}" rel="stylesheet" />
 
     <th:block th:insert="fragments/feedPost :: header" th:with="owner=${post.owner}, location=${post.location}"></th:block>
-    <th:block th:insert="fragments/feedPost :: content" th:with="resourceArray=${post.resourceArray}"></th:block>
+    <th:block th:insert="fragments/feedPost :: image" th:if="${post.isVideo == false && post.isSidecar == false}" th:with="resourceArray=${post.resourceArray}"></th:block>
+    <th:block th:insert="fragments/feedPost :: video" th:if="${post.isVideo == true && post.isSidecar == false}" th:with="videoUrl=${post.videoUrl}"></th:block>
+    <th:block th:insert="fragments/feedPost :: sidecar" th:if="${post.isVideo == false && post.isSidecar == true}" th:with="sidecarArray=${post.sidecarArray}, shortcode=${post.shortcode}"></th:block>
     <th:block th:insert="fragments/feedPost :: actions" th:with="likes=${post.likes}"></th:block>
     <th:block th:insert="fragments/feedPost :: comment" th:with="owner=${post.owner}, text=${post.description}, feedDescription=${true}"></th:block>
     <a th:class="viewAllComments" th:text="${'View all ' + @formatter.numCommaFormatter(post.commentsData.count) + ' comments'}"></a>
@@ -60,10 +62,93 @@
     </button>
 </form>
 
-<div th:class="contentImage" th:fragment="content">
+<div th:class="contentImage" th:fragment="image">
     <link th:href="@{/css/feedPost/content.css}" rel="stylesheet" />
 
     <img th:class="main" th:src="${resourceArray[1].src}" />
+</div>
+
+<div th:class="contentImage" th:fragment="sidecar">
+    <link th:href="@{/css/feedPost/content.css}" rel="stylesheet" />
+
+    <button th:id="${'previousButton-' + shortcode}" th:class="previousSlide" th:attr="onclick=|previousSlide('${shortcode}')|" style="display: none">
+        <div th:class="previousSlideIcon"/>
+    </button>
+
+    <img th:id="${'sidecar-' + shortcode}" th:class="main" th:src="${sidecarArray[0].resourceArray[1].src}" />
+
+    <button th:id="${'nextButton-' + shortcode}" th:class="nextSlide" th:attr="onclick=|nextSlide('${shortcode}')|" >
+        <div th:class="nextSlideIcon"/>
+    </button>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var shortcode = /*[[${shortcode}]]*/ '';
+        postSidecar[shortcode] = {sidecarArray: /*[[${sidecarArray}]]*/ [], currentSlide: 0}
+        /*]]>*/
+        function nextSlide (shortcode) {
+            var sidecarImage = document.getElementById("sidecar-" + shortcode);
+            var nextButton = document.getElementById("nextButton-" + shortcode);
+            var previousButton = document.getElementById("previousButton-" + shortcode);
+            postSidecar[shortcode].currentSlide++
+            const currentSlide = postSidecar[shortcode].currentSlide;
+            const sidecarArray = postSidecar[shortcode].sidecarArray;
+            sidecarImage.src = sidecarArray[currentSlide].resourceArray[1].src;
+            previousButton.style.display = "block";
+            if (currentSlide === sidecarArray.length - 1) {
+                nextButton.style.display = "none";
+            }
+        }
+
+        function previousSlide (shortcode) {
+            var sidecarImage = document.getElementById("sidecar-" + shortcode);
+            var nextButton = document.getElementById("nextButton-" + shortcode);
+            var previousButton = document.getElementById("previousButton-" + shortcode);
+            postSidecar[shortcode].currentSlide--
+            const currentSlide = postSidecar[shortcode].currentSlide;
+            const sidecarArray = postSidecar[shortcode].sidecarArray;
+            sidecarImage.src = sidecarArray[currentSlide].resourceArray[1].src;
+            nextButton.style.display = "block";
+            if (currentSlide === 0) {
+                previousButton.style.display = "none";
+            }
+        }
+    </script>
+</div>
+
+<div th:class="contentImage" th:fragment="video">
+    <link th:href="@{/css/feedPost/content.css}" rel="stylesheet" />
+
+    <video id="video1" autoPlay loop muted>
+        <source th:src="${videoUrl}" type="video/mp4" />
+    </video>
+    <div th:class="contentSound" onclick="setIsMuted()">
+        <svg id="muted" aria-label="Muted" fill="#ffffff" height="12" viewBox="0 0 48 48" width="12">
+            <path d="M1.5 13.3c-.8 0-1.5.7-1.5 1.5v18.4c0 .8.7 1.5 1.5 1.5h8.7l12.9 12.9c.9.9 2.5.3 2.5-1v-9.8c0-.4-.2-.8-.4-1.1l-22-22c-.3-.3-.7-.4-1.1-.4h-.6zm46.8 31.4l-5.5-5.5C44.9 36.6 48 31.4 48 24c0-11.4-7.2-17.4-7.2-17.4-.6-.6-1.6-.6-2.2 0L37.2 8c-.6.6-.6 1.6 0 2.2 0 0 5.7 5 5.7 13.8 0 5.4-2.1 9.3-3.8 11.6L35.5 32c1.1-1.7 2.3-4.4 2.3-8 0-6.8-4.1-10.3-4.1-10.3-.6-.6-1.6-.6-2.2 0l-1.4 1.4c-.6.6-.6 1.6 0 2.2 0 0 2.6 2 2.6 6.7 0 1.8-.4 3.2-.9 4.3L25.5 22V1.4c0-1.3-1.6-1.9-2.5-1L13.5 10 3.3-.3c-.6-.6-1.5-.6-2.1 0L-.2 1.1c-.6.6-.6 1.5 0 2.1L4 7.6l26.8 26.8 13.9 13.9c.6.6 1.5.6 2.1 0l1.4-1.4c.7-.6.7-1.6.1-2.2z" fill-rule="evenodd"></path>
+        </svg>
+        <svg id="sound" style="display: none" aria-label="Sound" fill="#ffffff" height="12" viewBox="0 0 48 48" width="12">
+            <path d="M40.8 6.6c-.6-.6-1.6-.6-2.2 0L37.2 8c-.6.6-.6 1.6 0 2.2 0 0 5.7 5 5.7 13.8s-5.7 13.8-5.7 13.8c-.6.6-.6 1.6 0 2.2l1.4 1.4c.6.6 1.6.6 2.2 0 0 0 7.2-6 7.2-17.4S40.8 6.6 40.8 6.6zm-7.1 7.1c-.6-.6-1.6-.6-2.2 0l-1.4 1.4c-.6.6-.6 1.6 0 2.2 0 0 2.6 2 2.6 6.7s-2.6 6.7-2.6 6.7c-.6.6-.6 1.6 0 2.2l1.4 1.4c.6.6 1.6.6 2.2 0 0 0 4.1-3.5 4.1-10.3s-4.1-10.3-4.1-10.3zM23.1.4L10.2 13.3H1.5c-.8 0-1.5.7-1.5 1.5v18.4c0 .8.7 1.5 1.5 1.5h8.7l12.9 12.9c.9.9 2.5.3 2.5-1V1.4C25.5.2 24-.5 23.1.4z" fill-rule="evenodd"></path>
+        </svg>
+    </div>
+
+    <script th:inline="javascript">
+        var isMuted = true;
+        var setIsMuted = function () {
+            isMuted = !isMuted
+            var muted = document.getElementById("muted");
+            var sound = document.getElementById("sound");
+            var video1 = document.getElementById("video1");
+            if (isMuted) {
+                muted.style.display = "block";
+                sound.style.display = "none";
+                video1.muted = true;
+            } else {
+                muted.style.display = "none";
+                sound.style.display = "block";
+                video1.muted = false;
+            }
+        }
+    </script>
 </div>
 
 <div th:class="feedItemActionsContainer" th:fragment="actions">
