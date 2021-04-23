@@ -1,6 +1,10 @@
 package com.services;
 
 import com.api.domain.GraphqlData;
+import com.commands.Shortcode_mediaCommand;
+import com.commands.UserCommand;
+import com.converters.Shortcode_mediaToShortcode_mediaCommand;
+import com.converters.UserToUserCommand;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
@@ -49,5 +53,18 @@ public class PostServiceImpl implements PostService {
         }
 
         return graphqlData;
+    }
+
+    @Override
+    public Shortcode_mediaCommand getPostCommand(String shortcode) {
+        GraphqlData graphqlData = getPost(shortcode);
+
+        if (graphqlData == null) {
+            return null;
+        }
+
+        Shortcode_mediaToShortcode_mediaCommand converter = new Shortcode_mediaToShortcode_mediaCommand();
+        Shortcode_mediaCommand shortcode_mediaCommand = converter.convert(graphqlData.getGraphql().getShortcode_media());
+        return shortcode_mediaCommand;
     }
 }

@@ -23,13 +23,14 @@ public class Shortcode_media {
     private String display_url;
     private List<Display_resource> display_resources = null;
     private Boolean is_video;
+    private String video_url;
     private String tracking_token;
     private Edge_media_to_tagged_user edge_media_to_tagged_user;
     private Edge_media_to_caption edge_media_to_caption;
     private Boolean caption_is_edited;
     private Boolean has_ranked_comments;
-    private Edge_media_to_parent_comment edge_media_to_parent_comment;
-    private Edge_media_to_hoisted_comment edge_media_to_hoisted_comment;
+    private Edge_media_preview_comment edge_media_to_parent_comment;
+    private Edge_media_preview_comment edge_media_to_hoisted_comment;
     private Edge_media_preview_comment edge_media_preview_comment;
     private Boolean comments_disabled;
     private Boolean commenting_disabled_for_viewer;
@@ -162,6 +163,14 @@ public class Shortcode_media {
         this.is_video = is_video;
     }
 
+    public String getVideo_url() {
+        return video_url;
+    }
+
+    public void setVideo_url(String video_url) {
+        this.video_url = video_url;
+    }
+
     public String getTracking_token() {
         return tracking_token;
     }
@@ -202,19 +211,19 @@ public class Shortcode_media {
         this.has_ranked_comments = has_ranked_comments;
     }
 
-    public Edge_media_to_parent_comment getEdge_media_to_parent_comment() {
+    public Edge_media_preview_comment getEdge_media_to_parent_comment() {
         return edge_media_to_parent_comment;
     }
 
-    public void setEdge_media_to_parent_comment(Edge_media_to_parent_comment edge_media_to_parent_comment) {
+    public void setEdge_media_to_parent_comment(Edge_media_preview_comment edge_media_to_parent_comment) {
         this.edge_media_to_parent_comment = edge_media_to_parent_comment;
     }
 
-    public Edge_media_to_hoisted_comment getEdge_media_to_hoisted_comment() {
+    public Edge_media_preview_comment getEdge_media_to_hoisted_comment() {
         return edge_media_to_hoisted_comment;
     }
 
-    public void setEdge_media_to_hoisted_comment(Edge_media_to_hoisted_comment edge_media_to_hoisted_comment) {
+    public void setEdge_media_to_hoisted_comment(Edge_media_preview_comment edge_media_to_hoisted_comment) {
         this.edge_media_to_hoisted_comment = edge_media_to_hoisted_comment;
     }
 
