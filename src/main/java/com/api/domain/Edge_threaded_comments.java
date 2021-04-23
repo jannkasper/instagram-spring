@@ -1,16 +1,34 @@
 
-package com.api.domain.profile;
+package com.api.domain;
 
+import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Edge_related_profiles {
+public class Edge_threaded_comments {
 
+    private Integer count;
+    private Page_info page_info;
     private List<Object> edges = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
+    public Page_info getPage_info() {
+        return page_info;
+    }
+
+    public void setPage_info(Page_info page_info) {
+        this.page_info = page_info;
+    }
 
     public List<Object> getEdges() {
         return edges;

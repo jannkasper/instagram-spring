@@ -1,8 +1,6 @@
 
 package com.api.domain;
 
-import com.api.domain.profile.Shortcode_media;
-
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;

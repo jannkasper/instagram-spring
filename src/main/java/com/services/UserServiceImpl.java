@@ -1,8 +1,6 @@
 package com.services;
 
-import com.api.domain.GraphqlData;
 import com.api.domain.UserData;
-import com.api.domain.profile.Profile;
 import com.commands.UserCommand;
 import com.converters.UserToUserCommand;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -10,8 +8,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

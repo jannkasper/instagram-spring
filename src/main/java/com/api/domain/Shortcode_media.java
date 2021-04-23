@@ -1,5 +1,5 @@
 
-package com.api.domain.profile;
+package com.api.domain;
 
 import java.util.HashMap;
 import java.util.List;
@@ -43,7 +43,7 @@ public class Shortcode_media {
     private Boolean viewer_has_saved_to_collection;
     private Boolean viewer_in_photo_of_you;
     private Boolean viewer_can_reshare;
-    private Owner__2 owner;
+    private Owner owner;
     private Boolean is_ad;
     private Edge_web_media_to_related_media edge_web_media_to_related_media;
     private Edge_sidecar_to_children edge_sidecar_to_children;
@@ -322,11 +322,11 @@ public class Shortcode_media {
         this.viewer_can_reshare = viewer_can_reshare;
     }
 
-    public Owner__2 getOwner() {
+    public Owner getOwner() {
         return owner;
     }
 
-    public void setOwner(Owner__2 owner) {
+    public void setOwner(Owner owner) {
         this.owner = owner;
     }
 

@@ -14,6 +14,9 @@ public class Node__Comment {
     private Boolean did_report_as_spam;
     private Owner owner;
     private Boolean viewer_has_liked;
+    private Edge_liked_by edge_liked_by;
+    private Boolean is_restricted_pending;
+    private Edge_threaded_comments edge_threaded_comments;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getId() {
@@ -72,4 +75,27 @@ public class Node__Comment {
         this.additionalProperties.put(name, value);
     }
 
+    public Edge_liked_by getEdge_liked_by() {
+        return edge_liked_by;
+    }
+
+    public void setEdge_liked_by(Edge_liked_by edge_liked_by) {
+        this.edge_liked_by = edge_liked_by;
+    }
+
+    public Boolean getIs_restricted_pending() {
+        return is_restricted_pending;
+    }
+
+    public void setIs_restricted_pending(Boolean is_restricted_pending) {
+        this.is_restricted_pending = is_restricted_pending;
+    }
+
+    public Edge_threaded_comments getEdge_threaded_comments() {
+        return edge_threaded_comments;
+    }
+
+    public void setEdge_threaded_comments(Edge_threaded_comments edge_threaded_comments) {
+        this.edge_threaded_comments = edge_threaded_comments;
+    }
 }

@@ -12,6 +12,7 @@ public class Location {
     private Boolean has_public_page;
     private String name;
     private String slug;
+    private String address_json;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getId() {
@@ -44,6 +45,14 @@ public class Location {
 
     public void setSlug(String slug) {
         this.slug = slug;
+    }
+
+    public String getAddress_json() {
+        return address_json;
+    }
+
+    public void setAddress_json(String address_json) {
+        this.address_json = address_json;
     }
 
     public Map<String, Object> getAdditionalProperties() {

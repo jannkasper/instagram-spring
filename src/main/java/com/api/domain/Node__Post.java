@@ -26,6 +26,7 @@ public class Node__Post {
     private Object gating_info;
     private Object fact_check_overall_rating;
     private Object fact_check_information;
+    private Object sensitivity_friction_info;
     private Sharing_friction_info sharing_friction_info;
     private Object media_overlay_info;
     private String media_preview;
@@ -414,4 +415,14 @@ public class Node__Post {
     public void setThumbnail_resources(List<Thumbnail_resource> thumbnail_resources) {
         this.thumbnail_resources = thumbnail_resources;
     }
+
+    public Object getSensitivity_friction_info() {
+        return sensitivity_friction_info;
+    }
+
+    public void setSensitivity_friction_info(Object sensitivity_friction_info) {
+        this.sensitivity_friction_info = sensitivity_friction_info;
+    }
+
+
 }

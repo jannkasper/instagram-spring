@@ -1,22 +1,22 @@
 
-package com.api.domain.profile;
+package com.api.domain;
 
+import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Profile {
+public class Edge_owner_to_timeline_media {
 
-    private Graphql graphql;
+    private Integer count;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public Graphql getGraphql() {
-        return graphql;
+    public Integer getCount() {
+        return count;
     }
 
-    public void setGraphql(Graphql graphql) {
-        this.graphql = graphql;
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
     public Map<String, Object> getAdditionalProperties() {

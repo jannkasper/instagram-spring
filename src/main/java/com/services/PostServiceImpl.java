@@ -1,8 +1,6 @@
 package com.services;
 
 import com.api.domain.GraphqlData;
-import com.api.domain.UserData;
-import com.api.domain.profile.Profile;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,7 +34,6 @@ public class PostServiceImpl implements PostService {
         String responseEntity = restTemplate.getForObject(uriComponents.toUriString(), String.class);
 
         Pattern pattern = Pattern.compile("<script type=\"text/javascript\">window.__additionalDataLoaded\\('/p/"+ shortcode +"/',(.*)\\);</script>", Pattern.DOTALL);
-//        Pattern pattern = Pattern.compile("<script type=\"text/javascript\">window._sharedData(.*)</script>", Pattern.DOTALL);
         Matcher matcher = pattern.matcher(responseEntity);
         while (matcher.find()) {
             responseEntity = matcher.group(1);
@@ -51,6 +48,6 @@ public class PostServiceImpl implements PostService {
             return null;
         }
 
-        return null;
+        return graphqlData;
     }
 }

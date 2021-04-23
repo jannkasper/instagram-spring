@@ -3,6 +3,7 @@ package com.controllers;
 import com.api.domain.GraphqlData;
 import com.api.domain.UserData;
 import com.commands.UserCommand;
+import com.services.PostService;
 import com.services.TagService;
 import com.services.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -17,34 +18,36 @@ public class ApiController {
     public static final String BASE_URL = "/api";
 
     private UserService userService;
+    private PostService postService;
     private TagService tagService;
 
-    public ApiController(UserService userService, TagService tagService) {
+    public ApiController(UserService userService, PostService postService, TagService tagService) {
         this.userService = userService;
+        this.postService = postService;
         this.tagService = tagService;
     }
 
-    @GetMapping("/posts/pure")
+    @GetMapping("/posts")
     @ResponseStatus(HttpStatus.OK)
     public UserData getUserFeed() {
         return userService.getUserMedia();
     }
 
-    @GetMapping("/posts")
+    @GetMapping("/v2/posts")
     @ResponseStatus(HttpStatus.OK)
     public UserCommand getUserFeedCommand() {
         return userService.getUserMediaCommand();
     }
 
-    @GetMapping("tags/{name}/pure")
+    @GetMapping("/posts/{shortcode}")
+    @ResponseStatus(HttpStatus.OK)
+    public GraphqlData getUserByName(@PathVariable String shortcode) {
+        return postService.getPost(shortcode);
+    }
+
+    @GetMapping("tags/{name}")
     @ResponseStatus(HttpStatus.OK)
     public GraphqlData getTagByName(@PathVariable String name) {
         return tagService.getTag(name);
     }
-
-//    @GetMapping("/users/{username}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public GraphqlData getUserByName(@PathVariable String username) {
-//        return userService.getUser(username);
-//    }
 }
