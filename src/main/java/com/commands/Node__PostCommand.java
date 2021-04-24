@@ -32,6 +32,6 @@ public class Node__PostCommand {
     private String postId;
     private Integer likeCount;
     private Integer commentCount;
-    private String thumbnail_src;
+    private String thumbnailSrc;
     private List<Thumbnail_resourceCommand> thumbnailArray;
 }

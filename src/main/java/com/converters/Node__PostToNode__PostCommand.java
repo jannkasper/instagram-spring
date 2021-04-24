@@ -77,7 +77,7 @@ public class Node__PostToNode__PostCommand implements Converter<Node__Post, Node
             }
         }
 
-        postCommand.setThumbnail_src(source.getThumbnail_src());
+        postCommand.setThumbnailSrc(source.getThumbnail_src());
 
         if (source.getThumbnail_resources() != null) {
             postCommand.setThumbnailArray(new ArrayList<>());

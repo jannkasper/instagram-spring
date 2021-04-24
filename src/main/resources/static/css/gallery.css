@@ -1,0 +1,34 @@
+.feedGalleryContainer {
+    display: block;
+    /*padding-top: 6vh;*/
+}
+
+.feedGalleryContent {
+    display: flex;
+    flex-direction: column;
+    /*align-content: space-between;*/
+    /*flex-wrap: wrap;*/
+    justify-content: center;
+}
+
+.feedGallery_header {
+    /*flex: 1 1 auto;*/
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    color: #8e8e8e;
+}
+
+.galleryUserName {
+    display: inline;
+    color: #262626;
+}
+
+.feedGallery_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+

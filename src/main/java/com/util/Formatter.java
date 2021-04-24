@@ -45,7 +45,16 @@ public class Formatter {
             resultDate += ", " + new SimpleDateFormat("y").format(calendar.getTime()); // YEAR
         }
 
-
         return resultDate;
+    }
+
+    @Bean
+    public String numFormatter(@Value("0") Integer num) {
+        if (num > 999 && num < 1000000) {
+            return String.format("%.1fk", ((float)num)/1000); // convert to K for number from > 1000 < 1 million
+        }else if(num > 1000000){
+            return String.format("%.1fM", ((float)num)/1000000); // convert to M for number from > 1 million
+        }
+        return num.toString(); // if value < 1000, nothing to do
     }
 }
