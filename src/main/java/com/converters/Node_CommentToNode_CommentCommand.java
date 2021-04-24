@@ -18,7 +18,7 @@ public class Node_CommentToNode_CommentCommand implements Converter<Node__Commen
         final Node_CommentCommand node_commentCommand = new Node_CommentCommand();
         node_commentCommand.setId(source.getId());
         node_commentCommand.setCreatedAt(source.getCreated_at());
-//        node_commentCommand.setLikes(source.);
+        node_commentCommand.setLikes(source.getEdge_liked_by().getCount());
         node_commentCommand.setText(source.getText());
         node_commentCommand.setViewerHasLiked(source.getViewer_has_liked());
 

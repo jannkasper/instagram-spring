@@ -170,7 +170,7 @@
     </div>
     <a th:class="itemLikes" href="#" th:text="${@formatter.numCommaFormatter(likes.count) + ' likes'}">0 likes</a>
     <br/>
-    <a th:class="itemDateText" th:if="${createdAt != null}" href="#">
+    <a th:class="itemDateText" th:if="${createdAt != null}" href="#" th:text="${@formatter.dateFormatter(createdAt)}">
         date
     </a>
 </div>

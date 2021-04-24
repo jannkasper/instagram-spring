@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+<div th:class="feedItemContainer" th:fragment="post">
+    <link th:href="@{/css/post.css}" rel="stylesheet" />
+
+    <div th:class="feedItemMainContainer">
+        <div th:class="feedItemMainContent">
+                <th:block th:insert="fragments/feedPost :: image" th:if="${post.isVideo == false && post.isSidecar == false}" th:with="resourceArray=${post.resourceArray}"></th:block>
+                <th:block th:insert="fragments/feedPost :: video" th:if="${post.isVideo == true && post.isSidecar == false}" th:with="videoUrl=${post.videoUrl}"></th:block>
+                <th:block th:insert="fragments/feedPost :: sidecar" th:if="${post.isVideo == false && post.isSidecar == true}" th:with="sidecarArray=${post.sidecarArray}, shortcode=${post.shortcode}"></th:block>
+        </div>
+        <div th:class="feedItemMainDescription">
+            <th:block th:insert="fragments/feedPost :: header" th:with="owner=${post.owner}, location=${post.location}"></th:block>
+            <th:block th:insert="fragments/post :: comments" th:with="commentsData=${post.commentsData}, shortcode=${post.shortcode}, owner=${post.owner}, text=${post.description}, createdAt=${post.createdAt}"></th:block>
+
+            <th:block th:insert="fragments/feedPost :: actions" th:with="likes=${post.likes}, createdAt=${post.createdAt}"></th:block>
+            <th:block th:replace="fragments/feedPost :: addComment"></th:block>
+        </div>
+    </div>
+</div>
+
+<div th:class="feedItemCommentsContainer" th:fragment="comments">
+    <link th:href="@{/css/post/comments.css}" rel="stylesheet" />
+    <div th:class="feedItemCommentsSlider">
+        <th:block th:insert="fragments/post :: comment" th:if="${text}" th:with="feedDescription=${true}, likes=${null}, owner=${owner}, text=${text}, createdAt=${post.createdAt}"></th:block>
+        <th:block th:insert="fragments/post :: comment" th:each="comment : ${commentsData.commentsArray}" th:with="feedDescription=${false}, likes=${comment.likes}, owner=${comment.owner}, text=${comment.text}, createdAt=${comment.createdAt}"></th:block>
+
+    </div>
+</div>
+
+<div th:class="commentContainer" th:fragment="comment">
+    <link th:href="@{/css/post/comment.css}" rel="stylesheet" />
+    <div>
+        <img th:class="commentUserImage" th:src="${owner.userImageUrl}" />
+    </div>
+    <div th:class="commentContent">
+        <a th:class="commentUserName" th:text="${owner.username}"></a>
+        <div th:class="verifiedBandage" th:if="${owner.isVerified}">
+            <svg viewBox="0 0 48 48" width="15px" height="15px">
+                <polygon fill="#42a5f5" points="29.62,3 33.053,8.308 39.367,8.624 39.686,14.937 44.997,18.367 42.116,23.995 45,29.62 39.692,33.053 39.376,39.367 33.063,39.686 29.633,44.997 24.005,42.116 18.38,45 14.947,39.692 8.633,39.376 8.314,33.063 3.003,29.633 5.884,24.005 3,18.38 8.308,14.947 8.624,8.633 14.937,8.314 18.367,3.003 23.995,5.884"/><polygon fill="#fff" points="21.396,31.255 14.899,24.76 17.021,22.639 21.428,27.046 30.996,17.772 33.084,19.926"/>
+            </svg>
+        </div>
+        <span th:text="${text}"></span>
+        <div th:class="commentActions">
+            <a th:class="commentDate"></a>
+            <button th:class="commentButton" th:if="${!feedDescription && likes != null}" th:text="${likes + ' like'}"></button>
+            <button th:class="commentButton" th:if="${!feedDescription}">Reply</button>
+        </div>
+    </div>
+    <div th:if="${!feedDescription}">
+        <svg aria-label="Like" fill="#262626" height="12" viewBox="0 0 48 48" width="12">
+            <path d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path>
+        </svg>
+    </div>
+
+</div>
+
+</body>
+</html>

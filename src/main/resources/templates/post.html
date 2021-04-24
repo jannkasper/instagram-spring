@@ -11,8 +11,13 @@
 <body>
 <th:block th:replace="fragments/header :: headerPanel"></th:block>
 
-<main th:class="mainContainer">
+<script th:inline="javascript">
+    var currentNumber = {};
+    var postSidecar = {};
+</script>
 
+<main th:class="mainContainer">
+    <th:block th:insert="fragments/post :: post" th:with="post=${postData}"></th:block>
 </main>
 
 </body>
