@@ -28,4 +28,10 @@ public class Node__PostCommand {
     private Boolean viewerHasSaved;
     private Edge_media_preview_commentCommand commentsData;
     private List<Node__SidecarCommand> sidecarArray = null;
+
+    private String postId;
+    private Integer likeCount;
+    private Integer commentCount;
+    private String thumbnail_src;
+    private List<Thumbnail_resourceCommand> thumbnailArray;
 }

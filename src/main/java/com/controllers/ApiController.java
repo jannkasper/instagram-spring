@@ -1,7 +1,10 @@
 package com.controllers;
 
+import com.api.domain.FeedData;
 import com.api.domain.GraphqlData;
 import com.api.domain.UserData;
+import com.commands.Edge_owner_to_timeline_mediaCommand;
+import com.commands.Shortcode_mediaCommand;
 import com.commands.UserCommand;
 import com.services.PostService;
 import com.services.TagService;
@@ -41,8 +44,26 @@ public class ApiController {
 
     @GetMapping("/posts/{shortcode}")
     @ResponseStatus(HttpStatus.OK)
-    public GraphqlData getUserByName(@PathVariable String shortcode) {
+    public GraphqlData getPost(@PathVariable String shortcode) {
         return postService.getPost(shortcode);
+    }
+
+    @GetMapping("/v2/posts/{shortcode}")
+    @ResponseStatus(HttpStatus.OK)
+    public Shortcode_mediaCommand getPostCommand(@PathVariable String shortcode) {
+        return postService.getPostCommand(shortcode);
+    }
+
+    @GetMapping("/posts/{shortcode}/more")
+    @ResponseStatus(HttpStatus.OK)
+    public FeedData getPostFeed(@PathVariable String shortcode, @RequestParam String userId, @RequestParam String first) {
+        return postService.getPostFeed(shortcode, userId, first);
+    }
+
+    @GetMapping("/v2/posts/{shortcode}/more")
+    @ResponseStatus(HttpStatus.OK)
+    public Edge_owner_to_timeline_mediaCommand getEdge_owner_to_timeline_mediaCommand(@PathVariable String shortcode, @RequestParam String userId, @RequestParam String first) {
+        return postService.getEdge_owner_to_timeline_mediaCommand(shortcode, userId, first);
     }
 
     @GetMapping("tags/{name}")

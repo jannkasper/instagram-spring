@@ -3,21 +3,20 @@ package com.api.domain;
 
 import javax.annotation.Generated;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Generated("jsonschema2pojo")
-public class Edge_media_to_tagged_user__1 {
+public class Data {
 
-    private List<Object> edges = null;
+    private User user;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public List<Object> getEdges() {
-        return edges;
+    public User getUser() {
+        return user;
     }
 
-    public void setEdges(List<Object> edges) {
-        this.edges = edges;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Map<String, Object> getAdditionalProperties() {

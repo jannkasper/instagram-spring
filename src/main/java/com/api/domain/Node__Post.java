@@ -34,6 +34,7 @@ public class Node__Post {
     private Integer taken_at_timestamp;
     private Edge_media_preview_like edge_media_preview_like;
     private Edge_media_to_sponsor_user edge_media_to_sponsor_user;
+    private Boolean is_paid_partnership;
     private Location location;
     private Boolean viewer_has_liked;
     private Boolean viewer_has_saved;
@@ -246,6 +247,14 @@ public class Node__Post {
 
     public void setEdge_media_to_sponsor_user(Edge_media_to_sponsor_user edge_media_to_sponsor_user) {
         this.edge_media_to_sponsor_user = edge_media_to_sponsor_user;
+    }
+
+    public Boolean getIs_paid_partnership() {
+        return is_paid_partnership;
+    }
+
+    public void setIs_paid_partnership(Boolean is_paid_partnership) {
+        this.is_paid_partnership = is_paid_partnership;
     }
 
     public Location getLocation() {

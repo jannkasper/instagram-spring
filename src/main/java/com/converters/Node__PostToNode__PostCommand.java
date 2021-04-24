@@ -3,6 +3,7 @@ package com.converters;
 import com.api.domain.Display_resource;
 import com.api.domain.Edge__Post;
 import com.api.domain.Node__Post;
+import com.api.domain.Thumbnail_resource;
 import com.commands.*;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -21,6 +22,7 @@ public class Node__PostToNode__PostCommand implements Converter<Node__Post, Node
         final Node__PostCommand postCommand = new Node__PostCommand();
         postCommand.setId(source.getId());
         postCommand.setShortcode(source.getShortcode());
+        postCommand.setPostId(source.getShortcode());
         postCommand.setIsVideo(source.getIs_video());
         postCommand.setIsSidecar(source.getEdge_sidecar_to_children() != null);
         postCommand.setVideoUrl(source.getVideo_url());
@@ -74,6 +76,28 @@ public class Node__PostToNode__PostCommand implements Converter<Node__Post, Node
                 postCommand.getSidecarArray().add(node__sidecarCommand);
             }
         }
+
+        postCommand.setThumbnail_src(source.getThumbnail_src());
+
+        if (source.getThumbnail_resources() != null) {
+            postCommand.setThumbnailArray(new ArrayList<>());
+            Thumbnail_resourceToThumbnail_resourceCommand converter = new Thumbnail_resourceToThumbnail_resourceCommand();
+            for (Thumbnail_resource thumbnail_resource : source.getThumbnail_resources()) {
+                final Thumbnail_resourceCommand thumbnail_resourceCommand = converter.convert(thumbnail_resource);
+                postCommand.getThumbnailArray().add(thumbnail_resourceCommand);
+            }
+        }
+
+        if (source.getEdge_liked_by() != null) {
+            postCommand.setLikeCount(source.getEdge_liked_by().getCount());
+        } else if (source.getEdge_media_preview_like() != null) {
+            postCommand.setLikeCount(source.getEdge_media_preview_like().getCount());
+        }
+
+        if (source.getEdge_media_to_comment() != null) {
+            postCommand.setCommentCount(source.getEdge_media_to_comment().getCount());
+        }
+
         return postCommand;
     }
 }

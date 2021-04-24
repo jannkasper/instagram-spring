@@ -14,6 +14,7 @@ public class User {
     private String full_name;
     private Boolean is_verified;
     private Edge_web_feed_timeline edge_web_feed_timeline;
+    private Edge_owner_to_timeline_media edge_owner_to_timeline_media;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getId() {
@@ -70,5 +71,13 @@ public class User {
 
     public void setIs_verified(Boolean is_verified) {
         this.is_verified = is_verified;
+    }
+
+    public Edge_owner_to_timeline_media getEdge_owner_to_timeline_media() {
+        return edge_owner_to_timeline_media;
+    }
+
+    public void setEdge_owner_to_timeline_media(Edge_owner_to_timeline_media edge_owner_to_timeline_media) {
+        this.edge_owner_to_timeline_media = edge_owner_to_timeline_media;
     }
 }
