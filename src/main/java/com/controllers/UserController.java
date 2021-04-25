@@ -22,4 +22,11 @@ public class UserController {
 
         return "index";
     }
+
+    @GetMapping({ "/{username}"})
+    public String getUserFeed(@PathVariable String username, Model model) {
+        model.addAttribute("userData", userService.getUserCommand(username));
+
+        return "user";
+    }
 }

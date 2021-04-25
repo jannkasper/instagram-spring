@@ -11,4 +11,6 @@ public interface UserService {
     UserCommand getUserMediaCommand();
 
     EntryData getUser(String username);
+
+    UserCommand getUserCommand(String username);
 }

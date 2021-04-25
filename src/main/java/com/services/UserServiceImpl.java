@@ -89,4 +89,17 @@ public class UserServiceImpl implements UserService {
 
         return entryData;
     }
+
+    @Override
+    public UserCommand getUserCommand(String username) {
+        EntryData entryData = getUser(username);
+
+        if (entryData == null || entryData.getEntry_data().getProfilePage() == null) {
+            return null;
+        }
+
+        UserToUserCommand converter = new UserToUserCommand();
+        UserCommand userCommand = converter.convert(entryData.getEntry_data().getProfilePage().stream().findFirst().get().getGraphql().getUser());
+        return userCommand;
+    }
 }

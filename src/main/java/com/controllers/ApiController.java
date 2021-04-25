@@ -69,8 +69,14 @@ public class ApiController {
 
     @GetMapping("/users/{username}")
     @ResponseStatus(HttpStatus.OK)
-    public EntryData getPostFeed(@PathVariable String username) {
+    public EntryData getEntryData(@PathVariable String username) {
         return userService.getUser(username);
+    }
+
+    @GetMapping("/v2/users/{username}")
+    @ResponseStatus(HttpStatus.OK)
+    public UserCommand getUserCommand(@PathVariable String username) {
+        return userService.getUserCommand(username);
     }
 
     @GetMapping("tags/{name}")
