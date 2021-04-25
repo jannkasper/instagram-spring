@@ -30,7 +30,7 @@
 
     <img th:class="userImage" th:src="${owner.userImageUrl}" />
     <div th:class="headerText">
-        <span th:class="userName" th:text="${owner.username}"></span>
+        <a th:class="userName" th:href="${'/' + owner.username}" th:text="${owner.username}"></a>
         <div th:class="localization" th:if="${location != null}" th:text="${location.name}"></div>
     </div>
     <div th:class="moreIcon">
@@ -179,7 +179,7 @@
     <link th:href="@{/css/feedPost/comment.css}" rel="stylesheet" />
 
     <div th:class="commentContent">
-        <a th:class="commentUserName" th:text="${owner.username}">username</a>
+        <a th:class="commentUserName" th:href="${'/' + owner.username}" th:text="${owner.username}">username</a>
         <span th:id="${'comment-' + id}" th:text="${text.length > 120 ? text.substring(0, text.lastIndexOf(' ', 120)) + '...' : text}"></span>
         <span th:id="${'commentShowMore-' + id}" th:if="${text.length > 120}" th:class="showMore" th:attr="onclick='handleShowMore(\'' + ${id} + '\', `' + ${text} + '`)'"> more</span>
     </div>
