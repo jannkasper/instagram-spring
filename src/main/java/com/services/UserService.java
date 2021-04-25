@@ -1,6 +1,6 @@
 package com.services;
 
-import com.api.domain.GraphqlData;
+import com.api.domain.EntryData;
 import com.api.domain.UserData;
 import com.commands.UserCommand;
 
@@ -10,5 +10,5 @@ public interface UserService {
 
     UserCommand getUserMediaCommand();
 
-    com.api.domain.test.UserData getUser(String username);
+    EntryData getUser(String username);
 }

@@ -1,12 +1,11 @@
 
-package com.api.domain.test;
+package com.api.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
 public class Entry_data {

@@ -8,9 +8,18 @@ import javax.annotation.Generated;
 @Generated("jsonschema2pojo")
 public class Graphql {
 
+    private User user;
     private Hashtag hashtag;
     private Shortcode_media shortcode_media;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Hashtag getHashtag() {
         return hashtag;

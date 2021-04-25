@@ -1,22 +1,24 @@
 
-package com.api.domain.test;
+package com.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Graphql {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class EntryData {
 
-    private User user;
+    private Entry_data entry_data;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public User getUser() {
-        return user;
+    public Entry_data getEntry_data() {
+        return entry_data;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setEntry_data(Entry_data entry_data) {
+        this.entry_data = entry_data;
     }
 
     public Map<String, Object> getAdditionalProperties() {

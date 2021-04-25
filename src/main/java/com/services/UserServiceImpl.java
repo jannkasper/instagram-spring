@@ -1,15 +1,12 @@
 package com.services;
 
-import com.api.domain.GraphqlData;
 import com.api.domain.UserData;
+import com.api.domain.EntryData;
 import com.commands.UserCommand;
 import com.converters.UserToUserCommand;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
@@ -66,7 +63,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public com.api.domain.test.UserData getUser(String username) {
+    public EntryData getUser(String username) {
         UriComponents uriComponents = UriComponentsBuilder
                 .fromUriString(api_url)
                 .path("/{username}")
@@ -80,16 +77,16 @@ public class UserServiceImpl implements UserService {
             responseEntity = matcher.group(1);
         }
 
-        com.api.domain.test.UserData userData;
+        EntryData entryData;
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         try {
-            userData =  mapper.readValue(responseEntity, com.api.domain.test.UserData.class);
+            entryData =  mapper.readValue(responseEntity, EntryData.class);
         } catch (Exception e) {
             System.out.println(e.toString());
             return null;
         }
 
-        return userData;
+        return entryData;
     }
 }

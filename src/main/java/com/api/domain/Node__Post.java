@@ -46,11 +46,14 @@ public class Node__Post {
     private Dash_info dash_info;
     private Boolean has_audio;
     private String product_type;
+    private Object felix_profile_grid_crop;
+    private Object encoding_status;
+    private Boolean is_published;
     private String title;
     private Double video_duration;
     private String video_url;
     private Integer video_view_count;
-    private Object clips_music_attribution_info;
+    private Clips_music_attribution_info clips_music_attribution_info;
     private Edge_media_to_comment edge_media_to_comment;
     private Edge_liked_by edge_liked_by;
     private String thumbnail_src;
@@ -345,6 +348,30 @@ public class Node__Post {
         this.product_type = product_type;
     }
 
+    public Object getFelix_profile_grid_crop() {
+        return felix_profile_grid_crop;
+    }
+
+    public void setFelix_profile_grid_crop(Object felix_profile_grid_crop) {
+        this.felix_profile_grid_crop = felix_profile_grid_crop;
+    }
+
+    public Object getEncoding_status() {
+        return encoding_status;
+    }
+
+    public void setEncoding_status(Object encoding_status) {
+        this.encoding_status = encoding_status;
+    }
+
+    public Boolean getIs_published() {
+        return is_published;
+    }
+
+    public void setIs_published(Boolean is_published) {
+        this.is_published = is_published;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -377,11 +404,11 @@ public class Node__Post {
         this.video_view_count = video_view_count;
     }
 
-    public Object getClips_music_attribution_info() {
+    public Clips_music_attribution_info getClips_music_attribution_info() {
         return clips_music_attribution_info;
     }
 
-    public void setClips_music_attribution_info(Object clips_music_attribution_info) {
+    public void setClips_music_attribution_info(Clips_music_attribution_info clips_music_attribution_info) {
         this.clips_music_attribution_info = clips_music_attribution_info;
     }
 

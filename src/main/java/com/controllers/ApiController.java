@@ -3,6 +3,7 @@ package com.controllers;
 import com.api.domain.FeedData;
 import com.api.domain.GraphqlData;
 import com.api.domain.UserData;
+import com.api.domain.EntryData;
 import com.commands.Edge_owner_to_timeline_mediaCommand;
 import com.commands.Shortcode_mediaCommand;
 import com.commands.UserCommand;
@@ -68,7 +69,7 @@ public class ApiController {
 
     @GetMapping("/users/{username}")
     @ResponseStatus(HttpStatus.OK)
-    public com.api.domain.test.UserData getPostFeed(@PathVariable String username) {
+    public EntryData getPostFeed(@PathVariable String username) {
         return userService.getUser(username);
     }
 
