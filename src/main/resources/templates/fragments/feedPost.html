@@ -13,7 +13,7 @@
     <th:block th:insert="fragments/feedPost :: sidecar" th:if="${post.isVideo == false && post.isSidecar == true}" th:with="sidecarArray=${post.sidecarArray}, shortcode=${post.shortcode}"></th:block>
     <th:block th:insert="fragments/feedPost :: actions" th:with="likes=${post.likes}"></th:block>
     <th:block th:insert="fragments/feedPost :: comment" th:with="owner=${post.owner}, text=${post.description}, id=${post.shortcode}, feedDescription=${true}"></th:block>
-    <a th:class="viewAllComments" th:text="${'View all ' + @formatter.numCommaFormatter(post.commentsData.count) + ' comments'}"></a>
+    <a th:class="viewAllComments" th:text="${'View all ' + @formatter.numCommaFormatter(post.commentsData.count) + ' comments'}" th:href="${'/p/' + post.shortcode}"></a>
     <th:block th:insert="fragments/feedPost :: comment"
               th:if="${post.commentsData?.commentsArray}"
               th:each="comment : ${post.commentsData.commentsArray}"

@@ -27,7 +27,7 @@
     flex: 1 9999 0%;
 }
 
-.headerLogo > img {
+.headerLogoImg {
     width: 103px;
     height: 29px;
 }

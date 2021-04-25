@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<div th:class="feedGalleryItem" th:fragment="item">
+<a th:class="feedGalleryItem" th:fragment="item" th:href="${'/p/' + mediaData.postId}">
     <link th:href="@{/css/gallery/item.css}" rel="stylesheet" />
 
     <img th:if="mediaData.thumbnailSrc != null" th:src="${mediaData.thumbnailSrc}" />
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-</div>
+</a>
 
 </body>
 </html>

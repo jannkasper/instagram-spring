@@ -14,7 +14,9 @@
 </div>
 
 <div th:class="headerLogo" th:fragment="logo">
-    <img th:src="@{/images/logo.png}" />
+    <a th:href="${'/'}">
+        <img th:class="headerLogoImg" th:src="@{/images/logo.png}"/>
+    </a>
 </div>
 
 <div th:class="searchContainer" th:fragment="search">
