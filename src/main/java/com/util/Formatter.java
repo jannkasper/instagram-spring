@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
+import java.net.URI;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -56,5 +57,19 @@ public class Formatter {
             return String.format("%.1fM", ((float)num)/1000000); // convert to M for number from > 1 million
         }
         return num.toString(); // if value < 1000, nothing to do
+    }
+
+    @Bean
+    public String urlFormatter(@Value("") String url) {
+        try {
+            URI uri = new URI(url);
+            return uri.getHost();
+        } catch (Exception e) { }
+        return url;
+    }
+
+    @Bean
+    public String bioFormatter(@Value("") String bio) {
+        return bio.replaceAll("\n", "<br/>");
     }
 }

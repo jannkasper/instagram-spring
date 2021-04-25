@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Instagram - Spring</title>
+
+    <link th:href="@{/css/default.css}" rel="stylesheet" />
+    <link th:href="@{/css/layout.css}" rel="stylesheet" />
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+</head>
+<body>
+<th:block th:replace="fragments/header :: headerPanel"></th:block>
+
+<main th:class="mainContainer">
+    <th:block th:insert="fragments/user :: user" th:with="userData=${userData}"></th:block>
+    <th:block th:if="${userData.isPrivate}" th:insert="fragments/gallery :: private"></th:block>
+    <th:block th:unless="${userData.isPrivate}" th:insert="fragments/gallery :: gallery"
+              th:with="mediaData=${userData.timelineMedia}, title=${null}"></th:block>
+</main>
+
+</body>
+</html>

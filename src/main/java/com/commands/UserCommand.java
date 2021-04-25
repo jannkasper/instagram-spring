@@ -30,5 +30,5 @@ public class UserCommand {
 
     MutualFollowCommand mutualFollow;
     private List<Node__PostCommand> postArray;
-    private List<Node__PostCommand> timelineMedia;
+    private Edge_owner_to_timeline_mediaCommand timelineMedia;
 }

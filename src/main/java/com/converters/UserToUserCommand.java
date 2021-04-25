@@ -2,6 +2,7 @@ package com.converters;
 
 import com.api.domain.Edge__Post;
 import com.api.domain.User;
+import com.commands.Edge_owner_to_timeline_mediaCommand;
 import com.commands.MutualFollowCommand;
 import com.commands.Node__PostCommand;
 import com.commands.UserCommand;
@@ -71,17 +72,10 @@ public class UserToUserCommand implements Converter<User, UserCommand> {
         }
 
         if (source.getEdge_owner_to_timeline_media() != null && !source.getEdge_owner_to_timeline_media().getEdges().isEmpty()) {
-            userCommand.setTimelineMedia(new ArrayList<Node__PostCommand>());
-            Node__PostToNode__PostCommand nodeConverter = new Node__PostToNode__PostCommand();
-            for (Edge__Post edge__post : source.getEdge_owner_to_timeline_media().getEdges()) {
-                if (edge__post.getNode().get__typename().equals("GraphImage")
-                        || edge__post.getNode().get__typename().equals("GraphVideo")
-                        || edge__post.getNode().get__typename().equals("GraphSidecar") ) {
-                    final Node__PostCommand node = nodeConverter.convert(edge__post.getNode());
-                    userCommand.getTimelineMedia().add(node);
-                }
+            Edge_owner_to_timeline_mediaToEdge_owner_to_timeline_mediaCommand converter = new Edge_owner_to_timeline_mediaToEdge_owner_to_timeline_mediaCommand();
+            Edge_owner_to_timeline_mediaCommand edge_owner_to_timeline_mediaCommand = converter.convert(source.getEdge_owner_to_timeline_media());
 
-            }
+            userCommand.setTimelineMedia(edge_owner_to_timeline_mediaCommand);
         }
 
         return userCommand;
