@@ -10,5 +10,5 @@ public interface UserService {
 
     UserCommand getUserMediaCommand();
 
-//    GraphqlData getUser(String username);
+    com.api.domain.test.UserData getUser(String username);
 }

@@ -66,6 +66,12 @@ public class ApiController {
         return postService.getEdge_owner_to_timeline_mediaCommand(shortcode, userId, first);
     }
 
+    @GetMapping("/users/{username}")
+    @ResponseStatus(HttpStatus.OK)
+    public com.api.domain.test.UserData getPostFeed(@PathVariable String username) {
+        return userService.getUser(username);
+    }
+
     @GetMapping("tags/{name}")
     @ResponseStatus(HttpStatus.OK)
     public GraphqlData getTagByName(@PathVariable String name) {
