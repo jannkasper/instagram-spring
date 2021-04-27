@@ -10,6 +10,7 @@ public class Graphql {
 
     private User user;
     private Hashtag hashtag;
+    private Location location;
     private Shortcode_media shortcode_media;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -27,6 +28,14 @@ public class Graphql {
 
     public void setHashtag(Hashtag hashtag) {
         this.hashtag = hashtag;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public Shortcode_media getShortcode_media() {

@@ -1,10 +1,8 @@
 package com.controllers;
 
 import com.api.domain.*;
-import com.commands.Edge_owner_to_timeline_mediaCommand;
-import com.commands.HashtagCommand;
-import com.commands.Shortcode_mediaCommand;
-import com.commands.UserCommand;
+import com.commands.*;
+import com.services.LocationService;
 import com.services.PostService;
 import com.services.TagService;
 import com.services.UserService;
@@ -22,11 +20,13 @@ public class ApiController {
     private UserService userService;
     private PostService postService;
     private TagService tagService;
+    private LocationService locationService;
 
-    public ApiController(UserService userService, PostService postService, TagService tagService) {
+    public ApiController(UserService userService, PostService postService, TagService tagService, LocationService locationService) {
         this.userService = userService;
         this.postService = postService;
         this.tagService = tagService;
+        this.locationService = locationService;
     }
 
     @GetMapping("/posts")
@@ -87,5 +87,17 @@ public class ApiController {
     @ResponseStatus(HttpStatus.OK)
     public HashtagCommand getTagCommand(@PathVariable String tagName) {
         return tagService.getTagCommand(tagName);
+    }
+
+    @GetMapping("/locations/{locationId}/{locationName}")
+    @ResponseStatus(HttpStatus.OK)
+    public GraphqlData getLocation(@PathVariable String locationId, @PathVariable String locationName) {
+        return locationService.getLocation(locationId, locationName);
+    }
+
+    @GetMapping("/v2/locations/{locationId}/{locationName}")
+    @ResponseStatus(HttpStatus.OK)
+    public LocationCommand getLocationCommand(@PathVariable String locationId, @PathVariable String locationName) {
+        return locationService.getLocationCommand(locationId, locationName);
     }
 }
