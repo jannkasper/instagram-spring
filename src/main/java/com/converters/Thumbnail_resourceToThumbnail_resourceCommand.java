@@ -5,7 +5,7 @@ import com.commands.Thumbnail_resourceCommand;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import static constants.MyConstants.URL_PREFIX;
+import static com.constants.MyConstants.URL_PREFIX;
 
 @Component
 public class Thumbnail_resourceToThumbnail_resourceCommand implements Converter<Thumbnail_resource, Thumbnail_resourceCommand> {

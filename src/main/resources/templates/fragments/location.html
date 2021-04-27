@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+<div th:class="exploreHeaderContainer" th:fragment="header">
+    <link th:href="@{/css/tag.css}" rel="stylesheet" />
+
+    <div class="exploreImage">
+        <img th:src="${imageUrl}" crossorigin="anonymous" />
+    </div>
+    <div class="headerInfo">
+        <div class="headerInfoName" th:text="${name}"></div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -5,7 +5,7 @@ import com.commands.Edge_owner_to_timeline_mediaCommand;
 import com.commands.HashtagCommand;
 import org.springframework.core.convert.converter.Converter;
 
-import static constants.MyConstants.URL_PREFIX;
+import static com.constants.MyConstants.URL_PREFIX;
 
 public class HashtagToHashtagCommand implements Converter<Hashtag, HashtagCommand> {
 

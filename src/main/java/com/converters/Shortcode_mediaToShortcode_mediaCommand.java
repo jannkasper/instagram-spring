@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
-import static constants.MyConstants.URL_PREFIX;
+import static com.constants.MyConstants.URL_PREFIX;
 
 @Component
 public class Shortcode_mediaToShortcode_mediaCommand implements Converter<Shortcode_media, Shortcode_mediaCommand> {

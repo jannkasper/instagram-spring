@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Instagram - Spring</title>
+
+    <link th:href="@{/css/default.css}" rel="stylesheet" />
+    <link th:href="@{/css/layout.css}" rel="stylesheet" />
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+</head>
+<body>
+<th:block th:replace="fragments/header :: headerPanel"></th:block>
+
+<main th:class="mainContainer">
+    <th:block th:insert="fragments/location :: header" th:with="name=${locationData.locationName}, imageUrl=${locationData.locationImageUrl}, postCount=${locationData.postCount}"></th:block>
+    <th:block th:if="${locationData.topMedia != null}"
+              th:insert="fragments/gallery :: gallery"
+              th:with="mediaData=${locationData.topMedia}, title='Top posts'"></th:block>
+    <th:block th:if="${locationData.timelineMedia != null}"
+              th:insert="fragments/gallery :: gallery"
+              th:with="mediaData=${locationData.timelineMedia}, title='Most recent'"></th:block>
+</main>
+
+</body>
+</html>

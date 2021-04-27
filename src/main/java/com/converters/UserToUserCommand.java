@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-import static constants.MyConstants.URL_PREFIX;
+import static com.constants.MyConstants.URL_PREFIX;
 
 @Component
 public class UserToUserCommand implements Converter<User, UserCommand> {

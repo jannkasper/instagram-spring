@@ -20,6 +20,6 @@ public class TagController {
     public String getTag(@PathVariable String tagName, Model model) {
         model.addAttribute("tagData", tagService.getTagCommand(tagName));
 
-        return "user";
+        return "tag";
     }
 }

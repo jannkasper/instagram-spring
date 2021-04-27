@@ -5,7 +5,7 @@ import com.commands.OwnerCommand;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import static constants.MyConstants.URL_PREFIX;
+import static com.constants.MyConstants.URL_PREFIX;
 
 @Component
 public class OwnerToOwnerCommand implements Converter<Owner, OwnerCommand> {

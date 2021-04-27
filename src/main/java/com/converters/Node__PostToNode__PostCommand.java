@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
-import static constants.MyConstants.URL_PREFIX;
+import static com.constants.MyConstants.URL_PREFIX;
 
 @Component
 public class Node__PostToNode__PostCommand implements Converter<Node__Post, Node__PostCommand> {
@@ -79,7 +79,7 @@ public class Node__PostToNode__PostCommand implements Converter<Node__Post, Node
             }
         }
 
-        postCommand.setThumbnailSrc(source.getThumbnail_src());
+        postCommand.setThumbnailSrc(URL_PREFIX + source.getThumbnail_src());
 
         if (source.getThumbnail_resources() != null) {
             postCommand.setThumbnailArray(new ArrayList<>());

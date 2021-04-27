@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+<div th:class="exploreHeaderContainer" th:fragment="header">
+    <link th:href="@{/css/tag.css}" rel="stylesheet" />
+
+    <div class="exploreImage">
+        <img th:src="${imageUrl}" crossorigin="anonymous" />
+    </div>
+    <div class="headerInfo">
+        <div class="headerInfoName" th:text="${'#' + name}"></div>
+        <div class="headerInfoScore">
+            <span class="scoresName"><span class="bold" th:text="${@formatter.numCommaFormatter(postCount)}"></span> posts</span>
+        </div>
+        <button class="buttonFollow">Follow</button>
+    </div>
+
+</div>
+
+</body>
+</html>
