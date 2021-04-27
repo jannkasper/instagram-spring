@@ -1,17 +1,14 @@
 package com.controllers;
 
-import com.api.domain.GraphqlData;
 import com.services.TagService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
-@RequestMapping(TagController.BASE_URL)
-@RestController
+@Controller
 public class TagController {
-
-    public static final String BASE_URL = "/api/tags";
 
     private TagService tagService;
 
@@ -19,9 +16,10 @@ public class TagController {
         this.tagService = tagService;
     }
 
-//    @GetMapping("{name}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public GraphqlData getTagByName(@PathVariable String name) {
-//        return tagService.getTag(name);
-//    }
+    @GetMapping({ "/tags/{tagName}"})
+    public String getTag(@PathVariable String tagName, Model model) {
+        model.addAttribute("tagData", tagService.getTagCommand(tagName));
+
+        return "user";
+    }
 }

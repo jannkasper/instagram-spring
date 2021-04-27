@@ -14,8 +14,8 @@ public class Hashtag {
     private Boolean is_following;
     private Boolean is_top_media_only;
     private String profile_pic_url;
-    private Edge_hashtag_to_media edge_hashtag_to_media;
-    private Edge_hashtag_to_top_posts edge_hashtag_to_top_posts;
+    private Edge_owner_to_timeline_media edge_hashtag_to_media;
+    private Edge_owner_to_timeline_media edge_hashtag_to_top_posts;
     private Edge_hashtag_to_content_advisory edge_hashtag_to_content_advisory;
     private Edge_hashtag_to_related_tags edge_hashtag_to_related_tags;
     private Edge_hashtag_to_null_state edge_hashtag_to_null_state;
@@ -69,19 +69,19 @@ public class Hashtag {
         this.profile_pic_url = profile_pic_url;
     }
 
-    public Edge_hashtag_to_media getEdge_hashtag_to_media() {
+    public Edge_owner_to_timeline_media getEdge_hashtag_to_media() {
         return edge_hashtag_to_media;
     }
 
-    public void setEdge_hashtag_to_media(Edge_hashtag_to_media edge_hashtag_to_media) {
+    public void setEdge_hashtag_to_media(Edge_owner_to_timeline_media edge_hashtag_to_media) {
         this.edge_hashtag_to_media = edge_hashtag_to_media;
     }
 
-    public Edge_hashtag_to_top_posts getEdge_hashtag_to_top_posts() {
+    public Edge_owner_to_timeline_media getEdge_hashtag_to_top_posts() {
         return edge_hashtag_to_top_posts;
     }
 
-    public void setEdge_hashtag_to_top_posts(Edge_hashtag_to_top_posts edge_hashtag_to_top_posts) {
+    public void setEdge_hashtag_to_top_posts(Edge_owner_to_timeline_media edge_hashtag_to_top_posts) {
         this.edge_hashtag_to_top_posts = edge_hashtag_to_top_posts;
     }
 

@@ -1,6 +1,8 @@
 package com.services;
 
 import com.api.domain.GraphqlData;
+import com.commands.HashtagCommand;
+import com.converters.HashtagToHashtagCommand;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -30,5 +32,18 @@ public class TagServiceImpl implements TagService {
         GraphqlData responseEntity = restTemplate.getForObject(uriComponents.toUriString(), GraphqlData.class);
 
         return responseEntity;
+    }
+
+    @Override
+    public HashtagCommand getTagCommand(String name) {
+        GraphqlData graphqlData = getTag(name);
+
+        if (graphqlData == null || graphqlData.getGraphql().getHashtag() == null) {
+            return null;
+        }
+
+        HashtagToHashtagCommand converter = new HashtagToHashtagCommand();
+        HashtagCommand hashtagCommand = converter.convert(graphqlData.getGraphql().getHashtag());
+        return hashtagCommand;
     }
 }

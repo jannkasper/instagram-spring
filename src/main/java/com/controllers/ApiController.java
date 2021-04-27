@@ -1,10 +1,8 @@
 package com.controllers;
 
-import com.api.domain.FeedData;
-import com.api.domain.GraphqlData;
-import com.api.domain.UserData;
-import com.api.domain.EntryData;
+import com.api.domain.*;
 import com.commands.Edge_owner_to_timeline_mediaCommand;
+import com.commands.HashtagCommand;
 import com.commands.Shortcode_mediaCommand;
 import com.commands.UserCommand;
 import com.services.PostService;
@@ -79,9 +77,15 @@ public class ApiController {
         return userService.getUserCommand(username);
     }
 
-    @GetMapping("tags/{name}")
+    @GetMapping("tags/{tagName}")
     @ResponseStatus(HttpStatus.OK)
-    public GraphqlData getTagByName(@PathVariable String name) {
-        return tagService.getTag(name);
+    public GraphqlData getTag(@PathVariable String tagName) {
+        return tagService.getTag(tagName);
+    }
+
+    @GetMapping("/v2/tags/{tagName}")
+    @ResponseStatus(HttpStatus.OK)
+    public HashtagCommand getTagCommand(@PathVariable String tagName) {
+        return tagService.getTagCommand(tagName);
     }
 }
