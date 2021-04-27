@@ -38,12 +38,12 @@ public class LocationServiceImpl implements LocationService {
     public LocationCommand getLocationCommand(String locationId, String locationName) {
         GraphqlData graphqlData = getLocation(locationId, locationName);
 
-        if (graphqlData == null || graphqlData.getGraphql().getHashtag() == null) {
+        if (graphqlData == null || graphqlData.getGraphql().getLocation() == null) {
             return null;
         }
 
         LocationToLocationCommand converter = new LocationToLocationCommand();
         LocationCommand locationCommand = converter.convert(graphqlData.getGraphql().getLocation());
-        return null;
+        return locationCommand;
     }
 }
