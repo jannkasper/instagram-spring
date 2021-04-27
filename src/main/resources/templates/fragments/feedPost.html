@@ -28,7 +28,7 @@
 <div th:class="header" th:fragment="header">
     <link th:href="@{/css/feedPost/header.css}" rel="stylesheet" />
 
-    <img th:class="userImage" th:src="${owner.userImageUrl}" />
+    <img th:class="userImage" th:src="${owner.userImageUrl}" crossorigin="anonymous" />
     <div th:class="headerText">
         <a th:class="userName" th:href="${'/' + owner.username}" th:text="${owner.username}"></a>
         <div th:class="localization" th:if="${location != null}" th:text="${location.name}"></div>
@@ -65,7 +65,7 @@
 <div th:class="contentImage" th:fragment="image">
     <link th:href="@{/css/feedPost/content.css}" rel="stylesheet" />
 
-    <img th:class="main" th:src="${resourceArray[1].src}" />
+    <img th:class="main" th:src="${resourceArray[1].src}" crossorigin="anonymous" />
 </div>
 
 <div th:class="contentImage" th:fragment="sidecar">
@@ -75,7 +75,7 @@
         <div th:class="previousSlideIcon"/>
     </button>
 
-    <img th:id="${'sidecar-' + shortcode}" th:class="main" th:src="${sidecarArray[0].resourceArray[1].src}" />
+    <img th:id="${'sidecar-' + shortcode}" th:class="main" th:src="${sidecarArray[0].resourceArray[1].src}" crossorigin="anonymous" />
 
     <button th:id="${'nextButton-' + shortcode}" th:class="nextSlide" th:attr="onclick=|nextSlide('${shortcode}')|" >
         <div th:class="nextSlideIcon"/>
@@ -119,7 +119,7 @@
 <div th:class="contentImage" th:fragment="video">
     <link th:href="@{/css/feedPost/content.css}" rel="stylesheet" />
 
-    <video id="video1" autoPlay loop muted>
+    <video id="video1" autoPlay loop muted crossorigin="anonymous">
         <source th:src="${videoUrl}" type="video/mp4" />
     </video>
     <div th:class="contentSound" onclick="setIsMuted()">

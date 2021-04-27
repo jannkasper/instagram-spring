@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
+import static constants.MyConstants.URL_PREFIX;
+
 @Component
 public class Node__PostToNode__PostCommand implements Converter<Node__Post, Node__PostCommand> {
 
@@ -25,7 +27,7 @@ public class Node__PostToNode__PostCommand implements Converter<Node__Post, Node
         postCommand.setPostId(source.getShortcode());
         postCommand.setIsVideo(source.getIs_video());
         postCommand.setIsSidecar(source.getEdge_sidecar_to_children() != null);
-        postCommand.setVideoUrl(source.getVideo_url());
+        postCommand.setVideoUrl(URL_PREFIX + source.getVideo_url());
         postCommand.setCreatedAt(source.getTaken_at_timestamp());
         postCommand.setViewerHasLiked(source.getViewer_has_liked());
         postCommand.setViewerHasSaved(source.getViewer_has_saved());

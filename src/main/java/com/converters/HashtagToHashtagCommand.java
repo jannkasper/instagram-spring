@@ -5,6 +5,8 @@ import com.commands.Edge_owner_to_timeline_mediaCommand;
 import com.commands.HashtagCommand;
 import org.springframework.core.convert.converter.Converter;
 
+import static constants.MyConstants.URL_PREFIX;
+
 public class HashtagToHashtagCommand implements Converter<Hashtag, HashtagCommand> {
 
     @Override
@@ -16,7 +18,7 @@ public class HashtagToHashtagCommand implements Converter<Hashtag, HashtagComman
         final HashtagCommand hashtagCommand = new HashtagCommand();
         hashtagCommand.setId(source.getId());
         hashtagCommand.setTagName(source.getName());
-        hashtagCommand.setTagImageUrl(source.getProfile_pic_url());
+        hashtagCommand.setTagImageUrl(URL_PREFIX + source.getProfile_pic_url());
 
         if (source.getEdge_hashtag_to_media() != null) {
             hashtagCommand.setPostCount(source.getEdge_hashtag_to_media().getCount());

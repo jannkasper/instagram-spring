@@ -35,7 +35,7 @@
 <div th:class="commentContainer" th:fragment="comment">
     <link th:href="@{/css/post/comment.css}" rel="stylesheet" />
     <div>
-        <img th:class="commentUserImage" th:src="${owner.userImageUrl}" />
+        <img th:class="commentUserImage" th:src="${owner.userImageUrl}" crossorigin="anonymous" />
     </div>
     <div th:class="commentContent">
         <a th:class="commentUserName" th:href="${'/' + owner.username}" th:text="${owner.username}"></a>
