@@ -23,18 +23,18 @@ public class Shortcode_media {
     private Boolean is_video;
     private String video_url;
     private String tracking_token;
-    private Edge_media_to_tagged_user edge_media_to_tagged_user;
-    private Edge_media_to_caption edge_media_to_caption;
+    private Edge<Edge_user> edge_media_to_tagged_user;
+    private Edge<Edge_caption> edge_media_to_caption;
     private Boolean caption_is_edited;
     private Boolean has_ranked_comments;
-    private Edge_media_preview_comment edge_media_to_parent_comment;
-    private Edge_media_preview_comment edge_media_to_hoisted_comment;
-    private Edge_media_preview_comment edge_media_preview_comment;
+    private Edge<Edge_comment> edge_media_to_parent_comment;
+    private Edge<Edge_comment> edge_media_to_hoisted_comment;
+    private Edge<Edge_comment> edge_media_preview_comment;
     private Boolean comments_disabled;
     private Boolean commenting_disabled_for_viewer;
     private Integer taken_at_timestamp;
-    private Edge_media_preview_like edge_media_preview_like;
-    private Edge_media_to_sponsor_user edge_media_to_sponsor_user;
+    private Edge<Object> edge_media_preview_like;
+    private Edge<Object> edge_media_to_sponsor_user;
     private Boolean is_paid_partnership;
     private Location location;
     private Boolean viewer_has_liked;
@@ -44,9 +44,9 @@ public class Shortcode_media {
     private Boolean viewer_can_reshare;
     private Owner owner;
     private Boolean is_ad;
-    private Edge_web_media_to_related_media edge_web_media_to_related_media;
-    private Edge_sidecar_to_children edge_sidecar_to_children;
-    private Edge_related_profiles edge_related_profiles;
+    private Edge<Object> edge_web_media_to_related_media;
+    private Edge<Edge_post> edge_sidecar_to_children;
+    private Edge<Object> edge_related_profiles;
 
     public String get__typename() {
         return __typename;
@@ -176,19 +176,19 @@ public class Shortcode_media {
         this.tracking_token = tracking_token;
     }
 
-    public Edge_media_to_tagged_user getEdge_media_to_tagged_user() {
+    public Edge<Edge_user> getEdge_media_to_tagged_user() {
         return edge_media_to_tagged_user;
     }
 
-    public void setEdge_media_to_tagged_user(Edge_media_to_tagged_user edge_media_to_tagged_user) {
+    public void setEdge_media_to_tagged_user(Edge<Edge_user> edge_media_to_tagged_user) {
         this.edge_media_to_tagged_user = edge_media_to_tagged_user;
     }
 
-    public Edge_media_to_caption getEdge_media_to_caption() {
+    public Edge<Edge_caption> getEdge_media_to_caption() {
         return edge_media_to_caption;
     }
 
-    public void setEdge_media_to_caption(Edge_media_to_caption edge_media_to_caption) {
+    public void setEdge_media_to_caption(Edge<Edge_caption> edge_media_to_caption) {
         this.edge_media_to_caption = edge_media_to_caption;
     }
 
@@ -208,27 +208,27 @@ public class Shortcode_media {
         this.has_ranked_comments = has_ranked_comments;
     }
 
-    public Edge_media_preview_comment getEdge_media_to_parent_comment() {
+    public Edge<Edge_comment> getEdge_media_to_parent_comment() {
         return edge_media_to_parent_comment;
     }
 
-    public void setEdge_media_to_parent_comment(Edge_media_preview_comment edge_media_to_parent_comment) {
+    public void setEdge_media_to_parent_comment(Edge<Edge_comment> edge_media_to_parent_comment) {
         this.edge_media_to_parent_comment = edge_media_to_parent_comment;
     }
 
-    public Edge_media_preview_comment getEdge_media_to_hoisted_comment() {
+    public Edge<Edge_comment> getEdge_media_to_hoisted_comment() {
         return edge_media_to_hoisted_comment;
     }
 
-    public void setEdge_media_to_hoisted_comment(Edge_media_preview_comment edge_media_to_hoisted_comment) {
+    public void setEdge_media_to_hoisted_comment(Edge<Edge_comment> edge_media_to_hoisted_comment) {
         this.edge_media_to_hoisted_comment = edge_media_to_hoisted_comment;
     }
 
-    public Edge_media_preview_comment getEdge_media_preview_comment() {
+    public Edge<Edge_comment> getEdge_media_preview_comment() {
         return edge_media_preview_comment;
     }
 
-    public void setEdge_media_preview_comment(Edge_media_preview_comment edge_media_preview_comment) {
+    public void setEdge_media_preview_comment(Edge<Edge_comment> edge_media_preview_comment) {
         this.edge_media_preview_comment = edge_media_preview_comment;
     }
 
@@ -256,19 +256,19 @@ public class Shortcode_media {
         this.taken_at_timestamp = taken_at_timestamp;
     }
 
-    public Edge_media_preview_like getEdge_media_preview_like() {
+    public Edge<Object> getEdge_media_preview_like() {
         return edge_media_preview_like;
     }
 
-    public void setEdge_media_preview_like(Edge_media_preview_like edge_media_preview_like) {
+    public void setEdge_media_preview_like(Edge<Object> edge_media_preview_like) {
         this.edge_media_preview_like = edge_media_preview_like;
     }
 
-    public Edge_media_to_sponsor_user getEdge_media_to_sponsor_user() {
+    public Edge<Object> getEdge_media_to_sponsor_user() {
         return edge_media_to_sponsor_user;
     }
 
-    public void setEdge_media_to_sponsor_user(Edge_media_to_sponsor_user edge_media_to_sponsor_user) {
+    public void setEdge_media_to_sponsor_user(Edge<Object> edge_media_to_sponsor_user) {
         this.edge_media_to_sponsor_user = edge_media_to_sponsor_user;
     }
 
@@ -344,27 +344,27 @@ public class Shortcode_media {
         this.is_ad = is_ad;
     }
 
-    public Edge_web_media_to_related_media getEdge_web_media_to_related_media() {
+    public Edge<Object> getEdge_web_media_to_related_media() {
         return edge_web_media_to_related_media;
     }
 
-    public void setEdge_web_media_to_related_media(Edge_web_media_to_related_media edge_web_media_to_related_media) {
+    public void setEdge_web_media_to_related_media(Edge<Object> edge_web_media_to_related_media) {
         this.edge_web_media_to_related_media = edge_web_media_to_related_media;
     }
 
-    public Edge_sidecar_to_children getEdge_sidecar_to_children() {
+    public Edge<Edge_post> getEdge_sidecar_to_children() {
         return edge_sidecar_to_children;
     }
 
-    public void setEdge_sidecar_to_children(Edge_sidecar_to_children edge_sidecar_to_children) {
+    public void setEdge_sidecar_to_children(Edge<Edge_post> edge_sidecar_to_children) {
         this.edge_sidecar_to_children = edge_sidecar_to_children;
     }
 
-    public Edge_related_profiles getEdge_related_profiles() {
+    public Edge<Object> getEdge_related_profiles() {
         return edge_related_profiles;
     }
 
-    public void setEdge_related_profiles(Edge_related_profiles edge_related_profiles) {
+    public void setEdge_related_profiles(Edge<Object> edge_related_profiles) {
         this.edge_related_profiles = edge_related_profiles;
     }
 }

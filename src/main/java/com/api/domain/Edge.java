@@ -1,15 +1,15 @@
 
 package com.api.domain;
 
-import java.util.List;
 import javax.annotation.Generated;
+import java.util.List;
 
 @Generated("jsonschema2pojo")
-public class Edge_hashtag_to_media {
+public class Edge<T> {
 
     private Integer count;
     private Page_info page_info;
-    private List<Edge__Post> edges = null;
+    private List<T> edges = null;
 
     public Integer getCount() {
         return count;
@@ -27,11 +27,11 @@ public class Edge_hashtag_to_media {
         this.page_info = page_info;
     }
 
-    public List<Edge__Post> getEdges() {
+    public List<T> getEdges() {
         return edges;
     }
 
-    public void setEdges(List<Edge__Post> edges) {
+    public void setEdges(List<T> edges) {
         this.edges = edges;
     }
 }

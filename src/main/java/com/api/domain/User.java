@@ -11,18 +11,18 @@ public class User {
     private String username;
     private String full_name;
     private Boolean is_verified;
-    private Edge_web_feed_timeline edge_web_feed_timeline;
-    private Edge_owner_to_timeline_media edge_owner_to_timeline_media;
+    private Edge<Edge_post> edge_web_feed_timeline;
+    private Edge<Edge_post> edge_owner_to_timeline_media;
     private String biography;
     private Boolean blocked_by_viewer;
     private Boolean restricted_by_viewer;
     private Boolean country_block;
     private String external_url;
     private String external_url_linkshimmed;
-    private Edge_followed_by edge_followed_by;
+    private Edge<Object> edge_followed_by;
     private String fbid;
     private Boolean followed_by_viewer;
-    private Edge_follow edge_follow;
+    private Edge<Object> edge_follow;
     private Boolean follows_viewer;
     private Boolean has_ar_effects;
     private Boolean has_clips;
@@ -39,14 +39,14 @@ public class User {
     private String category_enum;
     private Object category_name;
     private Boolean is_private;
-    private Edge_mutual_followed_by edge_mutual_followed_by;
+    private Edge<Object> edge_mutual_followed_by;
     private String profile_pic_url_hd;
     private Boolean requested_by_viewer;
     private Boolean should_show_category;
     private Object connected_fb_page;
-    private Edge_felix_video_timeline edge_felix_video_timeline;
-    private Edge_saved_media edge_saved_media;
-    private Edge_media_collections edge_media_collections;
+    private Edge<Edge_post> edge_felix_video_timeline;
+    private Edge<Object> edge_saved_media;
+    private Edge<Object> edge_media_collections;
 
     public String getId() {
         return id;
@@ -72,11 +72,11 @@ public class User {
         this.username = username;
     }
 
-    public Edge_web_feed_timeline getEdge_web_feed_timeline() {
+    public Edge<Edge_post> getEdge_web_feed_timeline() {
         return edge_web_feed_timeline;
     }
 
-    public void setEdge_web_feed_timeline(Edge_web_feed_timeline edge_web_feed_timeline) {
+    public void setEdge_web_feed_timeline(Edge<Edge_post> edge_web_feed_timeline) {
         this.edge_web_feed_timeline = edge_web_feed_timeline;
     }
 
@@ -96,11 +96,11 @@ public class User {
         this.is_verified = is_verified;
     }
 
-    public Edge_owner_to_timeline_media getEdge_owner_to_timeline_media() {
+    public Edge<Edge_post> getEdge_owner_to_timeline_media() {
         return edge_owner_to_timeline_media;
     }
 
-    public void setEdge_owner_to_timeline_media(Edge_owner_to_timeline_media edge_owner_to_timeline_media) {
+    public void setEdge_owner_to_timeline_media(Edge<Edge_post> edge_owner_to_timeline_media) {
         this.edge_owner_to_timeline_media = edge_owner_to_timeline_media;
     }
 
@@ -152,11 +152,11 @@ public class User {
         this.external_url_linkshimmed = external_url_linkshimmed;
     }
 
-    public Edge_followed_by getEdge_followed_by() {
+    public Edge<Object> getEdge_followed_by() {
         return edge_followed_by;
     }
 
-    public void setEdge_followed_by(Edge_followed_by edge_followed_by) {
+    public void setEdge_followed_by(Edge<Object> edge_followed_by) {
         this.edge_followed_by = edge_followed_by;
     }
 
@@ -176,11 +176,11 @@ public class User {
         this.followed_by_viewer = followed_by_viewer;
     }
 
-    public Edge_follow getEdge_follow() {
+    public Edge<Object> getEdge_follow() {
         return edge_follow;
     }
 
-    public void setEdge_follow(Edge_follow edge_follow) {
+    public void setEdge_follow(Edge<Object> edge_follow) {
         this.edge_follow = edge_follow;
     }
 
@@ -312,11 +312,11 @@ public class User {
         this.is_private = is_private;
     }
 
-    public Edge_mutual_followed_by getEdge_mutual_followed_by() {
+    public Edge<Object> getEdge_mutual_followed_by() {
         return edge_mutual_followed_by;
     }
 
-    public void setEdge_mutual_followed_by(Edge_mutual_followed_by edge_mutual_followed_by) {
+    public void setEdge_mutual_followed_by(Edge<Object> edge_mutual_followed_by) {
         this.edge_mutual_followed_by = edge_mutual_followed_by;
     }
 
@@ -352,27 +352,27 @@ public class User {
         this.connected_fb_page = connected_fb_page;
     }
 
-    public Edge_felix_video_timeline getEdge_felix_video_timeline() {
+    public Edge<Edge_post> getEdge_felix_video_timeline() {
         return edge_felix_video_timeline;
     }
 
-    public void setEdge_felix_video_timeline(Edge_felix_video_timeline edge_felix_video_timeline) {
+    public void setEdge_felix_video_timeline(Edge<Edge_post> edge_felix_video_timeline) {
         this.edge_felix_video_timeline = edge_felix_video_timeline;
     }
 
-    public Edge_saved_media getEdge_saved_media() {
+    public Edge<Object> getEdge_saved_media() {
         return edge_saved_media;
     }
 
-    public void setEdge_saved_media(Edge_saved_media edge_saved_media) {
+    public void setEdge_saved_media(Edge<Object> edge_saved_media) {
         this.edge_saved_media = edge_saved_media;
     }
 
-    public Edge_media_collections getEdge_media_collections() {
+    public Edge<Object> getEdge_media_collections() {
         return edge_media_collections;
     }
 
-    public void setEdge_media_collections(Edge_media_collections edge_media_collections) {
+    public void setEdge_media_collections(Edge<Object> edge_media_collections) {
         this.edge_media_collections = edge_media_collections;
     }
 }

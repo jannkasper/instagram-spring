@@ -1,10 +1,12 @@
 
 package com.api.domain;
 
+import com.api.domain.Node__Caption;
+
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Edge__Caption {
+public class Edge_caption {
 
     private Node__Caption node;
 

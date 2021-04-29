@@ -1,7 +1,7 @@
 package com.converters;
 
-import com.api.domain.Edge__Comment;
-import com.api.domain.Edge_media_preview_comment;
+import com.api.domain.Edge;
+import com.api.domain.Edge_comment;
 import com.commands.Edge_media_preview_commentCommand;
 import com.commands.Node_CommentCommand;
 import com.commands.Page_infoCommand;
@@ -11,10 +11,10 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Component
-public class Edge_media_preview_commentToEdge_media_preview_commentCommand implements Converter<Edge_media_preview_comment, Edge_media_preview_commentCommand> {
+public class Edge_media_preview_commentToEdge_media_preview_commentCommand implements Converter<Edge<Edge_comment>, Edge_media_preview_commentCommand> {
 
     @Override
-    public Edge_media_preview_commentCommand convert(Edge_media_preview_comment source) {
+    public Edge_media_preview_commentCommand convert(Edge<Edge_comment> source) {
         if (source == null) {
             return null;
         }
@@ -31,7 +31,7 @@ public class Edge_media_preview_commentToEdge_media_preview_commentCommand imple
         if (source.getEdges() != null && !source.getEdges().isEmpty()) {
             edge_media_preview_commentCommand.setCommentsArray(new ArrayList<>());
             Node_CommentToNode_CommentCommand converter = new Node_CommentToNode_CommentCommand();
-            for (Edge__Comment edge__comment : source.getEdges()) {
+            for (Edge_comment edge__comment : source.getEdges()) {
                 final Node_CommentCommand node_commentCommand = converter.convert(edge__comment.getNode());
                 edge_media_preview_commentCommand.getCommentsArray().add(node_commentCommand);
             }

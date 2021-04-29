@@ -1,10 +1,12 @@
 
 package com.api.domain;
 
+import com.api.domain.Node__Comment;
+
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Edge__Comment {
+public class Edge_comment {
 
     private Node__Comment node;
 

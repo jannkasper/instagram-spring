@@ -12,9 +12,9 @@ public class Node__Comment {
     private Boolean did_report_as_spam;
     private Owner owner;
     private Boolean viewer_has_liked;
-    private Edge_liked_by edge_liked_by;
+    private Edge<Object> edge_liked_by;
     private Boolean is_restricted_pending;
-    private Edge_threaded_comments edge_threaded_comments;
+    private Edge<Object> edge_threaded_comments;
 
     public String getId() {
         return id;
@@ -63,11 +63,12 @@ public class Node__Comment {
     public void setViewer_has_liked(Boolean viewer_has_liked) {
         this.viewer_has_liked = viewer_has_liked;
     }
-    public Edge_liked_by getEdge_liked_by() {
+
+    public Edge<Object> getEdge_liked_by() {
         return edge_liked_by;
     }
 
-    public void setEdge_liked_by(Edge_liked_by edge_liked_by) {
+    public void setEdge_liked_by(Edge<Object> edge_liked_by) {
         this.edge_liked_by = edge_liked_by;
     }
 
@@ -79,11 +80,11 @@ public class Node__Comment {
         this.is_restricted_pending = is_restricted_pending;
     }
 
-    public Edge_threaded_comments getEdge_threaded_comments() {
+    public Edge<Object> getEdge_threaded_comments() {
         return edge_threaded_comments;
     }
 
-    public void setEdge_threaded_comments(Edge_threaded_comments edge_threaded_comments) {
+    public void setEdge_threaded_comments(Edge<Object> edge_threaded_comments) {
         this.edge_threaded_comments = edge_threaded_comments;
     }
 }

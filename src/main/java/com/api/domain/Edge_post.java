@@ -1,10 +1,12 @@
 
 package com.api.domain;
 
+import com.api.domain.Node__Post;
+
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Edge__Post {
+public class Edge_post {
 
     private Node__Post node;
 

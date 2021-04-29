@@ -1,7 +1,7 @@
 package com.converters;
 
 import com.api.domain.Display_resource;
-import com.api.domain.Edge__Post;
+import com.api.domain.Edge_post;
 import com.api.domain.Node__Post;
 import com.api.domain.Thumbnail_resource;
 import com.commands.*;
@@ -71,7 +71,7 @@ public class Node__PostToNode__PostCommand implements Converter<Node__Post, Node
         if (source.getEdge_sidecar_to_children() != null && source.getEdge_sidecar_to_children().getEdges() != null) {
             postCommand.setSidecarArray(new ArrayList<>());
             Node__PostToNode__SidecarCommand converter = new Node__PostToNode__SidecarCommand();
-            for (Edge__Post edge__post : source.getEdge_sidecar_to_children().getEdges()) {
+            for (Edge_post edge__post : source.getEdge_sidecar_to_children().getEdges()) {
                 final Node__SidecarCommand node__sidecarCommand = converter.convert(edge__post.getNode());
                 postCommand.getSidecarArray().add(node__sidecarCommand);
             }

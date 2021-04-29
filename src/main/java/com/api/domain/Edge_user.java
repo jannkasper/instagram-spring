@@ -1,10 +1,12 @@
 
 package com.api.domain;
 
+import com.api.domain.Node__User;
+
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Edge__User {
+public class Edge_user {
 
     private Node__User node;
 

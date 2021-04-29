@@ -1,6 +1,6 @@
 package com.converters;
 
-import com.api.domain.Edge__Post;
+import com.api.domain.Edge_post;
 import com.api.domain.User;
 import com.commands.Edge_owner_to_timeline_mediaCommand;
 import com.commands.MutualFollowCommand;
@@ -60,7 +60,7 @@ public class UserToUserCommand implements Converter<User, UserCommand> {
         if (source.getEdge_web_feed_timeline() != null && !source.getEdge_web_feed_timeline().getEdges().isEmpty()) {
             userCommand.setPostArray(new ArrayList<Node__PostCommand>());
             Node__PostToNode__PostCommand nodeConverter = new Node__PostToNode__PostCommand();
-            for (Edge__Post edge__post : source.getEdge_web_feed_timeline().getEdges()) {
+            for (Edge_post edge__post : source.getEdge_web_feed_timeline().getEdges()) {
                 if (edge__post.getNode().get__typename().equals("GraphImage")
                         || edge__post.getNode().get__typename().equals("GraphVideo")
                         || edge__post.getNode().get__typename().equals("GraphSidecar") ) {

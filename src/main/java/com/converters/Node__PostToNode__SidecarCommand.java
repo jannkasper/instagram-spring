@@ -1,7 +1,6 @@
 package com.converters;
 
 import com.api.domain.Display_resource;
-import com.api.domain.Edge__Post;
 import com.api.domain.Node__Post;
 import com.commands.*;
 import org.springframework.core.convert.converter.Converter;
