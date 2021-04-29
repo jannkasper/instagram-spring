@@ -2,9 +2,7 @@
 package com.api.domain;
 
 import javax.annotation.Generated;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Generated("jsonschema2pojo")
 public class Edge_felix_video_timeline {
@@ -12,7 +10,6 @@ public class Edge_felix_video_timeline {
     private Integer count;
     private Page_info page_info;
     private List<Edge__Post> edges = null;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public Integer getCount() {
         return count;
@@ -37,13 +34,4 @@ public class Edge_felix_video_timeline {
     public void setEdges(List<Edge__Post> edges) {
         this.edges = edges;
     }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
 }

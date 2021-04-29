@@ -2,8 +2,6 @@
 package com.api.domain;
 
 import javax.annotation.Generated;
-import java.util.HashMap;
-import java.util.Map;
 
 @Generated("jsonschema2pojo")
 public class User {
@@ -49,7 +47,6 @@ public class User {
     private Edge_felix_video_timeline edge_felix_video_timeline;
     private Edge_saved_media edge_saved_media;
     private Edge_media_collections edge_media_collections;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getId() {
         return id;
@@ -81,14 +78,6 @@ public class User {
 
     public void setEdge_web_feed_timeline(Edge_web_feed_timeline edge_web_feed_timeline) {
         this.edge_web_feed_timeline = edge_web_feed_timeline;
-    }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 
     public String getFull_name() {

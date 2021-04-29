@@ -2,8 +2,6 @@
 package com.api.domain;
 
 import javax.annotation.Generated;
-import java.util.HashMap;
-import java.util.Map;
 
 @Generated("jsonschema2pojo")
 public class Node__Comment {
@@ -17,7 +15,6 @@ public class Node__Comment {
     private Edge_liked_by edge_liked_by;
     private Boolean is_restricted_pending;
     private Edge_threaded_comments edge_threaded_comments;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getId() {
         return id;
@@ -66,15 +63,6 @@ public class Node__Comment {
     public void setViewer_has_liked(Boolean viewer_has_liked) {
         this.viewer_has_liked = viewer_has_liked;
     }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
     public Edge_liked_by getEdge_liked_by() {
         return edge_liked_by;
     }

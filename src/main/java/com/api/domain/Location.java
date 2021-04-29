@@ -2,8 +2,6 @@
 package com.api.domain;
 
 import javax.annotation.Generated;
-import java.util.HashMap;
-import java.util.Map;
 
 @Generated("jsonschema2pojo")
 public class Location {
@@ -23,7 +21,6 @@ public class Location {
     private Edge_owner_to_timeline_media edge_location_to_media;
     private Edge_owner_to_timeline_media edge_location_to_top_posts;
     private Directory directory;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getId() {
         return id;
@@ -144,13 +141,4 @@ public class Location {
     public void setDirectory(Directory directory) {
         this.directory = directory;
     }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
 }

@@ -1,8 +1,6 @@
 
 package com.api.domain;
 
-import java.util.HashMap;
-import java.util.Map;
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
@@ -23,7 +21,6 @@ public class Owner {
     private Boolean pass_tiering_recommendation;
     private Edge_owner_to_timeline_media edge_owner_to_timeline_media;
     private Edge_followed_by edge_followed_by;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getId() {
         return id;
@@ -48,15 +45,6 @@ public class Owner {
     public void setUsername(String username) {
         this.username = username;
     }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
     public Boolean getFollowed_by_viewer() {
         return followed_by_viewer;
     }

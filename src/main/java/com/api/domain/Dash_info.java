@@ -2,8 +2,6 @@
 package com.api.domain;
 
 import javax.annotation.Generated;
-import java.util.HashMap;
-import java.util.Map;
 
 @Generated("jsonschema2pojo")
 public class Dash_info {
@@ -11,7 +9,6 @@ public class Dash_info {
     private Boolean is_dash_eligible;
     private String video_dash_manifest;
     private Integer number_of_qualities;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public Boolean getIs_dash_eligible() {
         return is_dash_eligible;
@@ -36,13 +33,4 @@ public class Dash_info {
     public void setNumber_of_qualities(Integer number_of_qualities) {
         this.number_of_qualities = number_of_qualities;
     }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
 }

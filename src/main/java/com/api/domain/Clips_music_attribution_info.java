@@ -2,8 +2,6 @@
 package com.api.domain;
 
 import javax.annotation.Generated;
-import java.util.HashMap;
-import java.util.Map;
 
 @Generated("jsonschema2pojo")
 public class Clips_music_attribution_info {
@@ -12,7 +10,6 @@ public class Clips_music_attribution_info {
     private String song_name;
     private Boolean uses_original_audio;
     private Boolean should_mute_audio;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getArtist_name() {
         return artist_name;
@@ -45,13 +42,4 @@ public class Clips_music_attribution_info {
     public void setShould_mute_audio(Boolean should_mute_audio) {
         this.should_mute_audio = should_mute_audio;
     }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
 }

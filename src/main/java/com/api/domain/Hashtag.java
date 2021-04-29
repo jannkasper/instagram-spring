@@ -1,8 +1,6 @@
 
 package com.api.domain;
 
-import java.util.HashMap;
-import java.util.Map;
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
@@ -19,7 +17,6 @@ public class Hashtag {
     private Edge_hashtag_to_content_advisory edge_hashtag_to_content_advisory;
     private Edge_hashtag_to_related_tags edge_hashtag_to_related_tags;
     private Edge_hashtag_to_null_state edge_hashtag_to_null_state;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getId() {
         return id;
@@ -108,13 +105,4 @@ public class Hashtag {
     public void setEdge_hashtag_to_null_state(Edge_hashtag_to_null_state edge_hashtag_to_null_state) {
         this.edge_hashtag_to_null_state = edge_hashtag_to_null_state;
     }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
 }

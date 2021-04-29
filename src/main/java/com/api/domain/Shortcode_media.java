@@ -1,9 +1,7 @@
 
 package com.api.domain;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
@@ -49,7 +47,6 @@ public class Shortcode_media {
     private Edge_web_media_to_related_media edge_web_media_to_related_media;
     private Edge_sidecar_to_children edge_sidecar_to_children;
     private Edge_related_profiles edge_related_profiles;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String get__typename() {
         return __typename;
@@ -370,13 +367,4 @@ public class Shortcode_media {
     public void setEdge_related_profiles(Edge_related_profiles edge_related_profiles) {
         this.edge_related_profiles = edge_related_profiles;
     }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
 }

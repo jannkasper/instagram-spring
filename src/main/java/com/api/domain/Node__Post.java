@@ -1,9 +1,7 @@
 
 package com.api.domain;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
@@ -58,7 +56,6 @@ public class Node__Post {
     private Edge_liked_by edge_liked_by;
     private String thumbnail_src;
     private List<Thumbnail_resource> thumbnail_resources = null;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String get__typename() {
         return __typename;
@@ -411,15 +408,6 @@ public class Node__Post {
     public void setClips_music_attribution_info(Clips_music_attribution_info clips_music_attribution_info) {
         this.clips_music_attribution_info = clips_music_attribution_info;
     }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
     public Edge_media_to_comment getEdge_media_to_comment() {
         return edge_media_to_comment;
     }

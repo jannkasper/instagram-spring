@@ -2,8 +2,6 @@
 package com.api.domain;
 
 import javax.annotation.Generated;
-import java.util.HashMap;
-import java.util.Map;
 
 @Generated("jsonschema2pojo")
 public class ProfilePage {
@@ -16,7 +14,6 @@ public class ProfilePage {
     private Boolean show_view_shop;
     private Object profile_pic_edit_sync_props;
     private Boolean always_show_message_button_to_pro_account;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getLogging_page_id() {
         return logging_page_id;
@@ -81,13 +78,4 @@ public class ProfilePage {
     public void setAlways_show_message_button_to_pro_account(Boolean always_show_message_button_to_pro_account) {
         this.always_show_message_button_to_pro_account = always_show_message_button_to_pro_account;
     }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
 }
