@@ -12,11 +12,11 @@ public class Hashtag {
     private Boolean is_following;
     private Boolean is_top_media_only;
     private String profile_pic_url;
-    private Edge<Edge_post> edge_hashtag_to_media;
-    private Edge<Edge_post> edge_hashtag_to_top_posts;
-    private Edge<Object> edge_hashtag_to_content_advisory;
-    private Edge<Object> edge_hashtag_to_related_tags;
-    private Edge<Object> edge_hashtag_to_null_state;
+    private EdgeList<Edge<Node_post>> edge_hashtag_to_media;
+    private EdgeList<Edge<Node_post>> edge_hashtag_to_top_posts;
+    private EdgeList<Object> edge_hashtag_to_content_advisory;
+    private EdgeList<Object> edge_hashtag_to_related_tags;
+    private EdgeList<Object> edge_hashtag_to_null_state;
 
     public String getId() {
         return id;
@@ -66,43 +66,43 @@ public class Hashtag {
         this.profile_pic_url = profile_pic_url;
     }
 
-    public Edge<Edge_post> getEdge_hashtag_to_media() {
+    public EdgeList<Edge<Node_post>> getEdge_hashtag_to_media() {
         return edge_hashtag_to_media;
     }
 
-    public void setEdge_hashtag_to_media(Edge<Edge_post> edge_hashtag_to_media) {
+    public void setEdge_hashtag_to_media(EdgeList<Edge<Node_post>> edge_hashtag_to_media) {
         this.edge_hashtag_to_media = edge_hashtag_to_media;
     }
 
-    public Edge<Edge_post> getEdge_hashtag_to_top_posts() {
+    public EdgeList<Edge<Node_post>> getEdge_hashtag_to_top_posts() {
         return edge_hashtag_to_top_posts;
     }
 
-    public void setEdge_hashtag_to_top_posts(Edge<Edge_post> edge_hashtag_to_top_posts) {
+    public void setEdge_hashtag_to_top_posts(EdgeList<Edge<Node_post>> edge_hashtag_to_top_posts) {
         this.edge_hashtag_to_top_posts = edge_hashtag_to_top_posts;
     }
 
-    public Edge<Object> getEdge_hashtag_to_content_advisory() {
+    public EdgeList<Object> getEdge_hashtag_to_content_advisory() {
         return edge_hashtag_to_content_advisory;
     }
 
-    public void setEdge_hashtag_to_content_advisory(Edge<Object> edge_hashtag_to_content_advisory) {
+    public void setEdge_hashtag_to_content_advisory(EdgeList<Object> edge_hashtag_to_content_advisory) {
         this.edge_hashtag_to_content_advisory = edge_hashtag_to_content_advisory;
     }
 
-    public Edge<Object> getEdge_hashtag_to_related_tags() {
+    public EdgeList<Object> getEdge_hashtag_to_related_tags() {
         return edge_hashtag_to_related_tags;
     }
 
-    public void setEdge_hashtag_to_related_tags(Edge<Object> edge_hashtag_to_related_tags) {
+    public void setEdge_hashtag_to_related_tags(EdgeList<Object> edge_hashtag_to_related_tags) {
         this.edge_hashtag_to_related_tags = edge_hashtag_to_related_tags;
     }
 
-    public Edge<Object> getEdge_hashtag_to_null_state() {
+    public EdgeList<Object> getEdge_hashtag_to_null_state() {
         return edge_hashtag_to_null_state;
     }
 
-    public void setEdge_hashtag_to_null_state(Edge<Object> edge_hashtag_to_null_state) {
+    public void setEdge_hashtag_to_null_state(EdgeList<Object> edge_hashtag_to_null_state) {
         this.edge_hashtag_to_null_state = edge_hashtag_to_null_state;
     }
 }

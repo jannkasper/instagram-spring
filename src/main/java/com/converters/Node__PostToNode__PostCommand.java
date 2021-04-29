@@ -1,9 +1,6 @@
 package com.converters;
 
-import com.api.domain.Display_resource;
-import com.api.domain.Edge_post;
-import com.api.domain.Node__Post;
-import com.api.domain.Thumbnail_resource;
+import com.api.domain.*;
 import com.commands.*;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -11,10 +8,10 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Component
-public class Node__PostToNode__PostCommand implements Converter<Node__Post, Node__PostCommand> {
+public class Node__PostToNode__PostCommand implements Converter<Node_post, Node__PostCommand> {
 
     @Override
-    public Node__PostCommand convert(Node__Post source) {
+    public Node__PostCommand convert(Node_post source) {
         if (source == null) {
             return null;
         }
@@ -71,7 +68,7 @@ public class Node__PostToNode__PostCommand implements Converter<Node__Post, Node
         if (source.getEdge_sidecar_to_children() != null && source.getEdge_sidecar_to_children().getEdges() != null) {
             postCommand.setSidecarArray(new ArrayList<>());
             Node__PostToNode__SidecarCommand converter = new Node__PostToNode__SidecarCommand();
-            for (Edge_post edge__post : source.getEdge_sidecar_to_children().getEdges()) {
+            for (Edge<Node_post> edge__post : source.getEdge_sidecar_to_children().getEdges()) {
                 final Node__SidecarCommand node__sidecarCommand = converter.convert(edge__post.getNode());
                 postCommand.getSidecarArray().add(node__sidecarCommand);
             }

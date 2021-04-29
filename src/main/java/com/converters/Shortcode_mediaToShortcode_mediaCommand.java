@@ -1,8 +1,6 @@
 package com.converters;
 
-import com.api.domain.Display_resource;
-import com.api.domain.Edge_post;
-import com.api.domain.Shortcode_media;
+import com.api.domain.*;
 import com.commands.*;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -68,7 +66,7 @@ public class Shortcode_mediaToShortcode_mediaCommand implements Converter<Shortc
         if (source.getEdge_sidecar_to_children() != null && source.getEdge_sidecar_to_children().getEdges() != null) {
             shortcode_mediaCommand.setSidecarArray(new ArrayList<>());
             Node__PostToNode__SidecarCommand converter = new Node__PostToNode__SidecarCommand();
-            for (Edge_post edge__post : source.getEdge_sidecar_to_children().getEdges()) {
+            for (Edge<Node_post> edge__post : source.getEdge_sidecar_to_children().getEdges()) {
                 final Node__SidecarCommand node__sidecarCommand = converter.convert(edge__post.getNode());
                 shortcode_mediaCommand.getSidecarArray().add(node__sidecarCommand);
             }

@@ -4,7 +4,7 @@ package com.api.domain;
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Node__User {
+public class Node_user {
 
     private User user;
     private Double x;

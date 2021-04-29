@@ -18,8 +18,8 @@ public class Location {
     private String primary_alias_on_fb;
     private String address_json;
     private String profile_pic_url;
-    private Edge<Edge_post> edge_location_to_media;
-    private Edge<Edge_post> edge_location_to_top_posts;
+    private EdgeList<Edge<Node_post>> edge_location_to_media;
+    private EdgeList<Edge<Node_post>> edge_location_to_top_posts;
     private Directory directory;
 
     public String getId() {
@@ -118,19 +118,19 @@ public class Location {
         this.profile_pic_url = profile_pic_url;
     }
 
-    public Edge<Edge_post> getEdge_location_to_media() {
+    public EdgeList<Edge<Node_post>> getEdge_location_to_media() {
         return edge_location_to_media;
     }
 
-    public void setEdge_location_to_media(Edge<Edge_post> edge_location_to_media) {
+    public void setEdge_location_to_media(EdgeList<Edge<Node_post>> edge_location_to_media) {
         this.edge_location_to_media = edge_location_to_media;
     }
 
-    public Edge<Edge_post> getEdge_location_to_top_posts() {
+    public EdgeList<Edge<Node_post>> getEdge_location_to_top_posts() {
         return edge_location_to_top_posts;
     }
 
-    public void setEdge_location_to_top_posts(Edge<Edge_post> edge_location_to_top_posts) {
+    public void setEdge_location_to_top_posts(EdgeList<Edge<Node_post>> edge_location_to_top_posts) {
         this.edge_location_to_top_posts = edge_location_to_top_posts;
     }
 

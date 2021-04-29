@@ -1,7 +1,8 @@
 package com.converters;
 
+import com.api.domain.EdgeList;
 import com.api.domain.Edge;
-import com.api.domain.Edge_post;
+import com.api.domain.Node_post;
 import com.commands.Edge_owner_to_timeline_mediaCommand;
 import com.commands.Node__PostCommand;
 import com.commands.Page_infoCommand;
@@ -9,10 +10,10 @@ import org.springframework.core.convert.converter.Converter;
 
 import java.util.ArrayList;
 
-public class Edge_owner_to_timeline_mediaToEdge_owner_to_timeline_mediaCommand implements Converter<Edge<Edge_post>, Edge_owner_to_timeline_mediaCommand> {
+public class Edge_owner_to_timeline_mediaToEdge_owner_to_timeline_mediaCommand implements Converter<EdgeList<Edge<Node_post>>, Edge_owner_to_timeline_mediaCommand> {
 
     @Override
-    public Edge_owner_to_timeline_mediaCommand convert(Edge<Edge_post> source) {
+    public Edge_owner_to_timeline_mediaCommand convert(EdgeList<Edge<Node_post>> source) {
         if (source == null) {
             return null;
         }
@@ -28,7 +29,7 @@ public class Edge_owner_to_timeline_mediaToEdge_owner_to_timeline_mediaCommand i
         if (source.getEdges() != null && !source.getEdges().isEmpty()) {
             edge_owner_to_timeline_mediaCommand.setMediaArray(new ArrayList<>());
             Node__PostToNode__PostCommand converter = new Node__PostToNode__PostCommand();
-            for (Edge_post edge__post : source.getEdges()) {
+            for (Edge<Node_post> edge__post : source.getEdges()) {
                 final Node__PostCommand node__postCommand = converter.convert(edge__post.getNode());
                 edge_owner_to_timeline_mediaCommand.getMediaArray().add(node__postCommand);
             }

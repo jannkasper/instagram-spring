@@ -1,16 +1,16 @@
 package com.converters;
 
-import com.api.domain.Node__Comment;
+import com.api.domain.Node_comment;
 import com.commands.Node_CommentCommand;
 import com.commands.OwnerCommand;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Node_CommentToNode_CommentCommand implements Converter<Node__Comment, Node_CommentCommand> {
+public class Node_CommentToNode_CommentCommand implements Converter<Node_comment, Node_CommentCommand> {
 
     @Override
-    public Node_CommentCommand convert(Node__Comment source) {
+    public Node_CommentCommand convert(Node_comment source) {
         if (source == null) {
             return null;
         }

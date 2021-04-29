@@ -4,7 +4,7 @@ package com.api.domain;
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Node__Caption {
+public class Node_caption {
 
     private String text;
 

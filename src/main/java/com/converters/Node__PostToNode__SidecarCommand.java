@@ -1,7 +1,7 @@
 package com.converters;
 
 import com.api.domain.Display_resource;
-import com.api.domain.Node__Post;
+import com.api.domain.Node_post;
 import com.commands.*;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Component
-public class Node__PostToNode__SidecarCommand implements Converter<Node__Post, Node__SidecarCommand> {
+public class Node__PostToNode__SidecarCommand implements Converter<Node_post, Node__SidecarCommand> {
 
     @Override
-    public Node__SidecarCommand convert(Node__Post source) {
+    public Node__SidecarCommand convert(Node_post source) {
         if (source == null) {
             return null;
         }

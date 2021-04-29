@@ -1,37 +1,14 @@
-
 package com.api.domain;
 
-import javax.annotation.Generated;
-import java.util.List;
-
-@Generated("jsonschema2pojo")
 public class Edge<T> {
 
-    private Integer count;
-    private Page_info page_info;
-    private List<T> edges = null;
+    private T node;
 
-    public Integer getCount() {
-        return count;
+    public T getNode() {
+        return node;
     }
 
-    public void setCount(Integer count) {
-        this.count = count;
-    }
-
-    public Page_info getPage_info() {
-        return page_info;
-    }
-
-    public void setPage_info(Page_info page_info) {
-        this.page_info = page_info;
-    }
-
-    public List<T> getEdges() {
-        return edges;
-    }
-
-    public void setEdges(List<T> edges) {
-        this.edges = edges;
+    public void setNode(T node) {
+        this.node = node;
     }
 }

@@ -19,8 +19,8 @@ public class Owner {
     private Boolean restricted_by_viewer;
     private Boolean is_unpublished;
     private Boolean pass_tiering_recommendation;
-    private Edge<Edge_post> edge_owner_to_timeline_media;
-    private Edge<Object> edge_followed_by;
+    private EdgeList<Edge<Node_post>> edge_owner_to_timeline_media;
+    private EdgeList<Object> edge_followed_by;
 
     public String getId() {
         return id;
@@ -125,19 +125,19 @@ public class Owner {
         this.pass_tiering_recommendation = pass_tiering_recommendation;
     }
 
-    public Edge<Edge_post> getEdge_owner_to_timeline_media() {
+    public EdgeList<Edge<Node_post>> getEdge_owner_to_timeline_media() {
         return edge_owner_to_timeline_media;
     }
 
-    public void setEdge_owner_to_timeline_media(Edge<Edge_post> edge_owner_to_timeline_media) {
+    public void setEdge_owner_to_timeline_media(EdgeList<Edge<Node_post>> edge_owner_to_timeline_media) {
         this.edge_owner_to_timeline_media = edge_owner_to_timeline_media;
     }
 
-    public Edge<Object> getEdge_followed_by() {
+    public EdgeList<Object> getEdge_followed_by() {
         return edge_followed_by;
     }
 
-    public void setEdge_followed_by(Edge<Object> edge_followed_by) {
+    public void setEdge_followed_by(EdgeList<Object> edge_followed_by) {
         this.edge_followed_by = edge_followed_by;
     }
 }
