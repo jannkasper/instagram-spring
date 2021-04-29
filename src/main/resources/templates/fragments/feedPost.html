@@ -28,7 +28,7 @@
 <div th:class="header" th:fragment="header">
     <link th:href="@{/css/feedPost/header.css}" rel="stylesheet" />
 
-    <img th:class="userImage" th:src="${owner.userImageUrl}" crossorigin="anonymous" />
+    <img th:class="userImage"  th:src="@{'/fetch/img/?url=' + ${#uris.escapeQueryParam(owner.userImageUrl)}}">
     <div th:class="headerText">
         <a th:class="userName" th:href="${'/' + owner.username}" th:text="${owner.username}"></a>
         <div th:class="localization" th:if="${location != null}" th:text="${location.name}"></div>
@@ -65,7 +65,7 @@
 <div th:class="contentImage" th:fragment="image">
     <link th:href="@{/css/feedPost/content.css}" rel="stylesheet" />
 
-    <img th:class="main" th:src="${resourceArray[1].src}" crossorigin="anonymous" />
+    <img th:class="main" th:src="@{'/fetch/img/?url=' + ${#uris.escapeQueryParam(resourceArray[1].src)}}" />
 </div>
 
 <div th:class="contentImage" th:fragment="sidecar">
@@ -75,7 +75,7 @@
         <div th:class="previousSlideIcon"/>
     </button>
 
-    <img th:id="${'sidecar-' + shortcode}" th:class="main" th:src="${sidecarArray[0].resourceArray[1].src}" crossorigin="anonymous" />
+    <img th:id="${'sidecar-' + shortcode}" th:class="main" th:src="@{'/fetch/img/?url=' + ${#uris.escapeQueryParam(sidecarArray[0].resourceArray[1].src)}}"  />
 
     <button th:id="${'nextButton-' + shortcode}" th:class="nextSlide" th:attr="onclick=|nextSlide('${shortcode}')|" >
         <div th:class="nextSlideIcon"/>
@@ -93,7 +93,7 @@
             postSidecar[shortcode].currentSlide++
             const currentSlide = postSidecar[shortcode].currentSlide;
             const sidecarArray = postSidecar[shortcode].sidecarArray;
-            sidecarImage.src = sidecarArray[currentSlide].resourceArray[1].src;
+            sidecarImage.src = '/fetch/img/?url=' + encodeURIComponent(sidecarArray[currentSlide].resourceArray[1].src);
             previousButton.style.display = "block";
             if (currentSlide === sidecarArray.length - 1) {
                 nextButton.style.display = "none";
@@ -107,7 +107,7 @@
             postSidecar[shortcode].currentSlide--
             const currentSlide = postSidecar[shortcode].currentSlide;
             const sidecarArray = postSidecar[shortcode].sidecarArray;
-            sidecarImage.src = sidecarArray[currentSlide].resourceArray[1].src;
+            sidecarImage.src = '/fetch/img/?url=' + encodeURIComponent(sidecarArray[currentSlide].resourceArray[1].src);
             nextButton.style.display = "block";
             if (currentSlide === 0) {
                 previousButton.style.display = "none";
@@ -119,8 +119,8 @@
 <div th:class="contentImage" th:fragment="video">
     <link th:href="@{/css/feedPost/content.css}" rel="stylesheet" />
 
-    <video id="video1" autoPlay loop muted crossorigin="anonymous">
-        <source th:src="${videoUrl}" type="video/mp4" />
+    <video id="video1" autoPlay loop muted>
+        <source th:src="@{'/fetch/img/?url=' + ${#uris.escapeQueryParam(videoUrl)}}" type="video/mp4" />
     </video>
     <div th:class="contentSound" onclick="setIsMuted()">
         <svg id="muted" aria-label="Muted" fill="#ffffff" height="12" viewBox="0 0 48 48" width="12">

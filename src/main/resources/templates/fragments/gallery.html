@@ -22,8 +22,8 @@
 <a th:class="feedGalleryItem" th:fragment="item" th:href="${'/p/' + mediaData.postId}">
     <link th:href="@{/css/gallery/item.css}" rel="stylesheet" />
 
-    <img th:if="mediaData.thumbnailSrc != null" th:src="${mediaData.thumbnailSrc}" crossorigin="anonymous" />
-    <img th:if="mediaData.thumbnailSrc == null" th:src="${mediaData.thumbnailArray[1].src}" crossorigin="anonymous" />
+    <img th:if="mediaData.thumbnailSrc != null" th:src="@{'/fetch/img/?url=' + ${#uris.escapeQueryParam(mediaData.thumbnailSrc)}}" />
+    <img th:if="mediaData.thumbnailSrc == null" th:src="@{'/fetch/img/?url=' + ${#uris.escapeQueryParam(mediaData.thumbnailArray[1].src)}}" />
 
     <div th:class="feedGalleryItem_iconBox" th:if="${mediaData.isSidecar || mediaData.isVideo}">
         <span th:if="${mediaData.isVideo}" th:class="feedGalleryItem_icon" th:classappend="feedGalleryItem_videoIcon"></span>

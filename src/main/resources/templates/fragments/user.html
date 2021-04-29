@@ -9,7 +9,7 @@
 
     <div th:class="userImageContainer">
         <div th:class="userImage">
-            <img th:src="${userData.userImageUrl}" crossorigin="anonymous" />
+            <img th:src="@{'/fetch/img/?url=' + ${#uris.escapeQueryParam(userData.userImageUrl)}}" />
         </div>
     </div>
     <div th:class="userDetails">

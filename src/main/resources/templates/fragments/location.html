@@ -8,7 +8,7 @@
     <link th:href="@{/css/tag.css}" rel="stylesheet" />
 
     <div class="exploreImage">
-        <img th:src="${imageUrl}" crossorigin="anonymous" />
+        <img th:src="@{'/fetch/img/?url=' + ${#uris.escapeQueryParam(imageUrl)}}" />
     </div>
     <div class="headerInfo">
         <div class="headerInfoName" th:text="${name}"></div>
