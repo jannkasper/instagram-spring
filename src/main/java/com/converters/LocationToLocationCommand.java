@@ -6,8 +6,6 @@ import com.commands.LocationCommand;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import static com.constants.MyConstants.URL_PREFIX;
-
 @Component
 public class LocationToLocationCommand implements Converter<Location, LocationCommand> {
 
@@ -25,7 +23,7 @@ public class LocationToLocationCommand implements Converter<Location, LocationCo
         locationCommand.setLat(source.getLat());
         locationCommand.setLng(source.getLng());
         locationCommand.setAddressJson(source.getAddress_json());
-        locationCommand.setLocationImageUrl(URL_PREFIX + source.getProfile_pic_url());
+        locationCommand.setLocationImageUrl(source.getProfile_pic_url());
         
         if (source.getEdge_location_to_media() != null) {
             locationCommand.setPostCount(source.getEdge_location_to_media().getCount());

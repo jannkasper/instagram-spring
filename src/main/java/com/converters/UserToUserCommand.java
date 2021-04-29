@@ -12,8 +12,6 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-import static com.constants.MyConstants.URL_PREFIX;
-
 @Component
 public class UserToUserCommand implements Converter<User, UserCommand> {
 
@@ -26,7 +24,7 @@ public class UserToUserCommand implements Converter<User, UserCommand> {
         userCommand.setId(source.getId());
         userCommand.setUsername(source.getUsername());
         userCommand.setName(source.getFull_name());
-        userCommand.setUserImageUrl(URL_PREFIX + source.getProfile_pic_url());
+        userCommand.setUserImageUrl(source.getProfile_pic_url());
 
         userCommand.setBio(source.getBiography());
         userCommand.setBioUrl(source.getExternal_url_linkshimmed());

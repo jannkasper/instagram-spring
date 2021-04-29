@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
-import static com.constants.MyConstants.URL_PREFIX;
-
 @Component
 public class Shortcode_mediaToShortcode_mediaCommand implements Converter<Shortcode_media, Shortcode_mediaCommand> {
 
@@ -24,7 +22,7 @@ public class Shortcode_mediaToShortcode_mediaCommand implements Converter<Shortc
         shortcode_mediaCommand.setShortcode(source.getShortcode());
         shortcode_mediaCommand.setIsVideo(source.getIs_video());
         shortcode_mediaCommand.setIsSidecar(source.getEdge_sidecar_to_children() != null);
-        shortcode_mediaCommand.setVideoUrl(URL_PREFIX + source.getVideo_url());
+        shortcode_mediaCommand.setVideoUrl(source.getVideo_url());
         shortcode_mediaCommand.setCreatedAt(source.getTaken_at_timestamp());
         shortcode_mediaCommand.setViewerHasLiked(source.getViewer_has_liked());
         shortcode_mediaCommand.setViewerHasSaved(source.getViewer_has_saved());

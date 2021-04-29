@@ -5,8 +5,6 @@ import com.commands.OwnerCommand;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import static com.constants.MyConstants.URL_PREFIX;
-
 @Component
 public class OwnerToOwnerCommand implements Converter<Owner, OwnerCommand> {
 
@@ -20,7 +18,7 @@ public class OwnerToOwnerCommand implements Converter<Owner, OwnerCommand> {
         ownerCommand.setId(source.getId());
         ownerCommand.setUsername(source.getUsername());
         ownerCommand.setIsVerified(source.getIs_verified());
-        ownerCommand.setUserImageUrl(URL_PREFIX + source.getProfile_pic_url());
+        ownerCommand.setUserImageUrl(source.getProfile_pic_url());
         return ownerCommand;
     }
 }
