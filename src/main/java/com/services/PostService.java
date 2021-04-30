@@ -1,18 +1,18 @@
 package com.services;
 
-import com.api.domain.FeedData;
-import com.api.domain.GraphqlData;
-import com.commands.Edge_owner_to_timeline_mediaCommand;
-import com.commands.Shortcode_mediaCommand;
+import com.domain.DataContainer;
+import com.domain.GraphqlContainer;
+import com.api.model.EdgeListPostDTO;
+import com.api.model.ShortcodeMediaDTO;
 
 public interface PostService {
 
-    GraphqlData getPost(String shortcode);
+    GraphqlContainer getPost(String shortcode);
 
-    Shortcode_mediaCommand getPostCommand(String shortcode);
+    ShortcodeMediaDTO getPostDTO(String shortcode);
 
-    FeedData getPostFeed(String shortcode, String userId, String first);
+    DataContainer getPostFeed(String shortcode, String userId, String first);
 
-    Edge_owner_to_timeline_mediaCommand getEdge_owner_to_timeline_mediaCommand(String shortcode, String userId, String first);
+    EdgeListPostDTO getPostFeedDTO(String shortcode, String userId, String first);
 
 }

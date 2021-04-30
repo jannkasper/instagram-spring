@@ -1,11 +1,11 @@
 package com.services;
 
-import com.api.domain.FeedData;
-import com.api.domain.GraphqlData;
-import com.commands.Edge_owner_to_timeline_mediaCommand;
-import com.commands.Shortcode_mediaCommand;
-import com.converters.Edge_owner_to_timeline_mediaToEdge_owner_to_timeline_mediaCommand;
-import com.converters.Shortcode_mediaToShortcode_mediaCommand;
+import com.domain.DataContainer;
+import com.domain.GraphqlContainer;
+import com.api.model.EdgeListPostDTO;
+import com.api.model.ShortcodeMediaDTO;
+import com.api.mapper.EdgeListPostMapper;
+import com.api.mapper.ShortcodeMediaMapper;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,7 +35,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public GraphqlData getPost(String shortcode) {
+    public GraphqlContainer getPost(String shortcode) {
         UriComponents uriComponents = UriComponentsBuilder
                 .fromUriString(api_url)
                 .path("/p/{shortcode}")
@@ -49,33 +49,33 @@ public class PostServiceImpl implements PostService {
             responseEntity = matcher.group(1);
         }
 
-        GraphqlData graphqlData;
+        GraphqlContainer graphqlContainer;
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         try {
-            graphqlData = mapper.readValue(responseEntity, GraphqlData.class);
+            graphqlContainer = mapper.readValue(responseEntity, GraphqlContainer.class);
         } catch (Exception e) {
             return null;
         }
 
-        return graphqlData;
+        return graphqlContainer;
     }
 
     @Override
-    public Shortcode_mediaCommand getPostCommand(String shortcode) {
-        GraphqlData graphqlData = getPost(shortcode);
+    public ShortcodeMediaDTO getPostDTO(String shortcode) {
+        GraphqlContainer graphqlContainer = getPost(shortcode);
 
-        if (graphqlData == null) {
+        if (graphqlContainer == null) {
             return null;
         }
 
-        Shortcode_mediaToShortcode_mediaCommand converter = new Shortcode_mediaToShortcode_mediaCommand();
-        Shortcode_mediaCommand shortcode_mediaCommand = converter.convert(graphqlData.getGraphql().getShortcode_media());
-        return shortcode_mediaCommand;
+        ShortcodeMediaMapper mapper = new ShortcodeMediaMapper();
+        ShortcodeMediaDTO shortcodeMediaDTO = mapper.convert(graphqlContainer.getGraphql().getShortcode_media());
+        return shortcodeMediaDTO;
     }
 
     @Override
-    public FeedData getPostFeed(String shortcode, String userId, String first) {
+    public DataContainer getPostFeed(String shortcode, String userId, String first) {
         Map map = new HashMap();
         map.put("id", userId);
         map.put("first", first);
@@ -88,27 +88,27 @@ public class PostServiceImpl implements PostService {
                 .queryParam("variables", convertedParams)
                 .build();
 
-        FeedData feedData = restTemplate.getForObject(uriComponents.toUri(), FeedData.class);
+        DataContainer dataContainer = restTemplate.getForObject(uriComponents.toUri(), DataContainer.class);
 
-        return feedData;
+        return dataContainer;
     }
 
     @Override
-    public Edge_owner_to_timeline_mediaCommand getEdge_owner_to_timeline_mediaCommand(String shortcode, String userId, String first) {
-        FeedData feedData = getPostFeed(shortcode, userId, first);
+    public EdgeListPostDTO getPostFeedDTO(String shortcode, String userId, String first) {
+        DataContainer dataContainer = getPostFeed(shortcode, userId, first);
 
-        if (feedData == null) {
+        if (dataContainer == null) {
             return null;
         }
 
-        Edge_owner_to_timeline_mediaToEdge_owner_to_timeline_mediaCommand converter = new Edge_owner_to_timeline_mediaToEdge_owner_to_timeline_mediaCommand();
-        Edge_owner_to_timeline_mediaCommand edge_owner_to_timeline_mediaCommand = converter.convert(feedData.getData().getUser().getEdge_owner_to_timeline_media());
-        edge_owner_to_timeline_mediaCommand.setMediaArray(edge_owner_to_timeline_mediaCommand.getMediaArray()
+        EdgeListPostMapper mapper = new EdgeListPostMapper();
+        EdgeListPostDTO edgeListPostDTO = mapper.convert(dataContainer.getData().getUser().getEdge_owner_to_timeline_media());
+        edgeListPostDTO.setMediaArray(edgeListPostDTO.getMediaArray()
                 .stream()
                 .filter(item -> !shortcode.equals(item.getShortcode()))
                 .limit(6)
                 .collect(Collectors.toList()));
-        return edge_owner_to_timeline_mediaCommand;
+        return edgeListPostDTO;
     }
 
     public String convertPathParams(Map map) {

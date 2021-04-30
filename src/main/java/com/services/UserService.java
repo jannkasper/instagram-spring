@@ -1,16 +1,16 @@
 package com.services;
 
-import com.api.domain.EntryData;
-import com.api.domain.UserData;
-import com.commands.UserCommand;
+import com.domain.EntryDataContainer;
+import com.domain.UserContainer;
+import com.api.model.UserDTO;
 
 public interface UserService {
 
-    UserData getUserMedia();
+    UserContainer getUserFeed();
 
-    UserCommand getUserMediaCommand();
+    UserDTO getUserFeedDTO();
 
-    EntryData getUser(String username);
+    EntryDataContainer getUser(String username);
 
-    UserCommand getUserCommand(String username);
+    UserDTO getUserDTO(String username);
 }

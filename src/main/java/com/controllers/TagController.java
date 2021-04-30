@@ -1,6 +1,6 @@
 package com.controllers;
 
-import com.services.TagService;
+import com.services.HashtagService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class TagController {
 
-    private TagService tagService;
+    private HashtagService tagService;
 
-    public TagController(TagService tagService) {
+    public TagController(HashtagService tagService) {
         this.tagService = tagService;
     }
 
     @GetMapping({ "/tags/{tagName}"})
     public String getTag(@PathVariable String tagName, Model model) {
-        model.addAttribute("tagData", tagService.getTagCommand(tagName));
+        model.addAttribute("tagData", tagService.getHashtagDTO(tagName));
 
         return "tag";
     }

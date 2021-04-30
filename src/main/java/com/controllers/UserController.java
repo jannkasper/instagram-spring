@@ -18,14 +18,14 @@ public class UserController {
 
     @GetMapping({"/", "/index"})
     public String getUserFeed(Model model) {
-        model.addAttribute("userData", userService.getUserMediaCommand());
+        model.addAttribute("userData", userService.getUserFeedDTO());
 
         return "index";
     }
 
     @GetMapping({ "/{username}"})
     public String getUserFeed(@PathVariable String username, Model model) {
-        model.addAttribute("userData", userService.getUserCommand(username));
+        model.addAttribute("userData", userService.getUserDTO(username));
 
         return "user";
     }

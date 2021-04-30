@@ -19,7 +19,7 @@
 <main th:class="mainContainer">
     <th:block th:insert="fragments/post :: post" th:with="post=${postData}"></th:block>
     <th:block th:insert="fragments/gallery :: gallery"
-              th:with="mediaData=${@postServiceImpl.getEdge_owner_to_timeline_mediaCommand(postData.shortcode, postData.owner.id, 12)}, title=${'More posts from ' + postData.owner.username}"></th:block>
+              th:with="mediaData=${@postServiceImpl.getPostFeedDTO(postData.shortcode, postData.owner.id, 12)}, title=${'More posts from ' + postData.owner.username}"></th:block>
 </main>
 
 </body>

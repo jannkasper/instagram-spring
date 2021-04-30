@@ -1,11 +1,11 @@
 package com.services;
 
-import com.api.domain.GraphqlData;
-import com.commands.LocationCommand;
+import com.domain.GraphqlContainer;
+import com.api.model.LocationDTO;
 
 public interface LocationService {
 
-    GraphqlData getLocation(String locationId, String locationName);
+    GraphqlContainer getLocation(String locationId, String locationName);
 
-    LocationCommand getLocationCommand(String locationId, String locationName);
+    LocationDTO getLocationDTO(String locationId, String locationName);
 }

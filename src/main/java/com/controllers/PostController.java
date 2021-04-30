@@ -18,7 +18,7 @@ public class PostController {
 
     @GetMapping({ "/p/{shortcode}"})
     public String getUserFeed(@PathVariable String shortcode, Model model) {
-        model.addAttribute("postData", postService.getPostCommand(shortcode));
+        model.addAttribute("postData", postService.getPostDTO(shortcode));
 
         return "post";
     }

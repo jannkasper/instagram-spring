@@ -1,10 +1,13 @@
 package com.controllers;
 
-import com.api.domain.*;
-import com.commands.*;
+import com.api.model.*;
+import com.domain.EntryDataContainer;
+import com.domain.DataContainer;
+import com.domain.GraphqlContainer;
+import com.domain.UserContainer;
 import com.services.LocationService;
 import com.services.PostService;
-import com.services.TagService;
+import com.services.HashtagService;
 import com.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -19,10 +22,10 @@ public class ApiController {
 
     private UserService userService;
     private PostService postService;
-    private TagService tagService;
+    private HashtagService tagService;
     private LocationService locationService;
 
-    public ApiController(UserService userService, PostService postService, TagService tagService, LocationService locationService) {
+    public ApiController(UserService userService, PostService postService, HashtagService tagService, LocationService locationService) {
         this.userService = userService;
         this.postService = postService;
         this.tagService = tagService;
@@ -31,73 +34,73 @@ public class ApiController {
 
     @GetMapping("/posts")
     @ResponseStatus(HttpStatus.OK)
-    public UserData getUserFeed() {
-        return userService.getUserMedia();
+    public UserContainer getUserFeed() {
+        return userService.getUserFeed();
     }
 
     @GetMapping("/v2/posts")
     @ResponseStatus(HttpStatus.OK)
-    public UserCommand getUserFeedCommand() {
-        return userService.getUserMediaCommand();
+    public UserDTO getUserFeedCommand() {
+        return userService.getUserFeedDTO();
     }
 
     @GetMapping("/posts/{shortcode}")
     @ResponseStatus(HttpStatus.OK)
-    public GraphqlData getPost(@PathVariable String shortcode) {
+    public GraphqlContainer getPost(@PathVariable String shortcode) {
         return postService.getPost(shortcode);
     }
 
     @GetMapping("/v2/posts/{shortcode}")
     @ResponseStatus(HttpStatus.OK)
-    public Shortcode_mediaCommand getPostCommand(@PathVariable String shortcode) {
-        return postService.getPostCommand(shortcode);
+    public ShortcodeMediaDTO getPostCommand(@PathVariable String shortcode) {
+        return postService.getPostDTO(shortcode);
     }
 
     @GetMapping("/posts/{shortcode}/more")
     @ResponseStatus(HttpStatus.OK)
-    public FeedData getPostFeed(@PathVariable String shortcode, @RequestParam String userId, @RequestParam String first) {
+    public DataContainer getPostFeed(@PathVariable String shortcode, @RequestParam String userId, @RequestParam String first) {
         return postService.getPostFeed(shortcode, userId, first);
     }
 
     @GetMapping("/v2/posts/{shortcode}/more")
     @ResponseStatus(HttpStatus.OK)
-    public Edge_owner_to_timeline_mediaCommand getEdge_owner_to_timeline_mediaCommand(@PathVariable String shortcode, @RequestParam String userId, @RequestParam String first) {
-        return postService.getEdge_owner_to_timeline_mediaCommand(shortcode, userId, first);
+    public EdgeListPostDTO getEdge_owner_to_timeline_mediaCommand(@PathVariable String shortcode, @RequestParam String userId, @RequestParam String first) {
+        return postService.getPostFeedDTO(shortcode, userId, first);
     }
 
     @GetMapping("/users/{username}")
     @ResponseStatus(HttpStatus.OK)
-    public EntryData getEntryData(@PathVariable String username) {
+    public EntryDataContainer getEntryData(@PathVariable String username) {
         return userService.getUser(username);
     }
 
     @GetMapping("/v2/users/{username}")
     @ResponseStatus(HttpStatus.OK)
-    public UserCommand getUserCommand(@PathVariable String username) {
-        return userService.getUserCommand(username);
+    public UserDTO getUserCommand(@PathVariable String username) {
+        return userService.getUserDTO(username);
     }
 
     @GetMapping("tags/{tagName}")
     @ResponseStatus(HttpStatus.OK)
-    public GraphqlData getTag(@PathVariable String tagName) {
-        return tagService.getTag(tagName);
+    public GraphqlContainer getTag(@PathVariable String tagName) {
+        return tagService.getHashtag(tagName);
     }
 
     @GetMapping("/v2/tags/{tagName}")
     @ResponseStatus(HttpStatus.OK)
-    public HashtagCommand getTagCommand(@PathVariable String tagName) {
-        return tagService.getTagCommand(tagName);
+    public HashtagDTO getTagCommand(@PathVariable String tagName) {
+        return tagService.getHashtagDTO(tagName);
     }
 
     @GetMapping("/locations/{locationId}/{locationName}")
     @ResponseStatus(HttpStatus.OK)
-    public GraphqlData getLocation(@PathVariable String locationId, @PathVariable String locationName) {
+    public GraphqlContainer getLocation(@PathVariable String locationId, @PathVariable String locationName) {
         return locationService.getLocation(locationId, locationName);
     }
 
     @GetMapping("/v2/locations/{locationId}/{locationName}")
     @ResponseStatus(HttpStatus.OK)
-    public LocationCommand getLocationCommand(@PathVariable String locationId, @PathVariable String locationName) {
-        return locationService.getLocationCommand(locationId, locationName);
+    public LocationDTO getLocationCommand(@PathVariable String locationId, @PathVariable String locationName) {
+        return locationService.getLocationDTO(locationId, locationName);
     }
 }

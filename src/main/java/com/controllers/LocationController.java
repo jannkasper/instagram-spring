@@ -19,7 +19,7 @@ public class LocationController {
 
     @GetMapping({ "/locations/{locationId}/{locationName}"})
     public String getLocation(@PathVariable String locationId, @PathVariable String locationName, Model model)  {
-        model.addAttribute("locationData", locationService.getLocationCommand(locationId, locationName));
+        model.addAttribute("locationData", locationService.getLocationDTO(locationId, locationName));
 
         return "location";
     }

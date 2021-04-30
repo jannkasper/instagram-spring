@@ -1,8 +1,8 @@
 package com.services;
 
-import com.api.domain.GraphqlData;
-import com.commands.LocationCommand;
-import com.converters.LocationToLocationCommand;
+import com.domain.GraphqlContainer;
+import com.api.model.LocationDTO;
+import com.api.mapper.LocationMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -22,28 +22,28 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
-    public GraphqlData getLocation(String locationId, String locationName) {
+    public GraphqlContainer getLocation(String locationId, String locationName) {
 
         UriComponents uriComponents = UriComponentsBuilder
                 .fromUriString(api_url)
                 .path("/explore/locations/{locationId}/{locationName}/?__a=1")
                 .buildAndExpand(locationId, locationName);
 
-        GraphqlData responseEntity = restTemplate.getForObject(uriComponents.toUriString(), GraphqlData.class);
+        GraphqlContainer responseEntity = restTemplate.getForObject(uriComponents.toUriString(), GraphqlContainer.class);
 
         return responseEntity;
     }
 
     @Override
-    public LocationCommand getLocationCommand(String locationId, String locationName) {
-        GraphqlData graphqlData = getLocation(locationId, locationName);
+    public LocationDTO getLocationDTO(String locationId, String locationName) {
+        GraphqlContainer graphqlContainer = getLocation(locationId, locationName);
 
-        if (graphqlData == null || graphqlData.getGraphql().getLocation() == null) {
+        if (graphqlContainer == null || graphqlContainer.getGraphql().getLocation() == null) {
             return null;
         }
 
-        LocationToLocationCommand converter = new LocationToLocationCommand();
-        LocationCommand locationCommand = converter.convert(graphqlData.getGraphql().getLocation());
-        return locationCommand;
+        LocationMapper mapper = new LocationMapper();
+        LocationDTO locationDTO = mapper.convert(graphqlContainer.getGraphql().getLocation());
+        return locationDTO;
     }
 }

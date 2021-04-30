@@ -1,9 +1,9 @@
 package com.services;
 
-import com.api.domain.UserData;
-import com.api.domain.EntryData;
-import com.commands.UserCommand;
-import com.converters.UserToUserCommand;
+import com.domain.UserContainer;
+import com.domain.EntryDataContainer;
+import com.api.model.UserDTO;
+import com.api.mapper.UserMapper;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserData getUserMedia() {
+    public UserContainer getUserFeed() {
         String responseEntity = restTemplate.getForObject(api_url, String.class);
 
         Pattern pattern = Pattern.compile("<script type=\"text/javascript\">window.__additionalDataLoaded\\('feed',(.*)\\);</script>", Pattern.DOTALL);
@@ -37,33 +37,33 @@ public class UserServiceImpl implements UserService {
             responseEntity = matcher.group(1);
         }
 
-        UserData userData;
+        UserContainer userContainer;
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         try {
-            userData =  mapper.readValue(responseEntity, UserData.class);
+            userContainer =  mapper.readValue(responseEntity, UserContainer.class);
         } catch (Exception e) {
             return null;
         }
 
-        return userData;
+        return userContainer;
     }
 
     @Override
-    public UserCommand getUserMediaCommand() {
-        UserData userData = getUserMedia();
+    public UserDTO getUserFeedDTO() {
+        UserContainer userContainer = getUserFeed();
 
-        if (userData == null) {
+        if (userContainer == null) {
             return null;
         }
 
-        UserToUserCommand converter = new UserToUserCommand();
-        UserCommand userCommand = converter.convert(userData.getUser());
-        return userCommand;
+        UserMapper mapper = new UserMapper();
+        UserDTO userDTO = mapper.convert(userContainer.getUser());
+        return userDTO;
     }
 
     @Override
-    public EntryData getUser(String username) {
+    public EntryDataContainer getUser(String username) {
         UriComponents uriComponents = UriComponentsBuilder
                 .fromUriString(api_url)
                 .path("/{username}")
@@ -77,29 +77,29 @@ public class UserServiceImpl implements UserService {
             responseEntity = matcher.group(1);
         }
 
-        EntryData entryData;
+        EntryDataContainer entryDataContainer;
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         try {
-            entryData =  mapper.readValue(responseEntity, EntryData.class);
+            entryDataContainer =  mapper.readValue(responseEntity, EntryDataContainer.class);
         } catch (Exception e) {
             System.out.println(e.toString());
             return null;
         }
 
-        return entryData;
+        return entryDataContainer;
     }
 
     @Override
-    public UserCommand getUserCommand(String username) {
-        EntryData entryData = getUser(username);
+    public UserDTO getUserDTO(String username) {
+        EntryDataContainer entryDataContainer = getUser(username);
 
-        if (entryData == null || entryData.getEntry_data().getProfilePage() == null) {
+        if (entryDataContainer == null || entryDataContainer.getEntry_data().getProfilePage() == null) {
             return null;
         }
 
-        UserToUserCommand converter = new UserToUserCommand();
-        UserCommand userCommand = converter.convert(entryData.getEntry_data().getProfilePage().stream().findFirst().get().getGraphql().getUser());
-        return userCommand;
+        UserMapper mapper = new UserMapper();
+        UserDTO userDTO = mapper.convert(entryDataContainer.getEntry_data().getProfilePage().stream().findFirst().get().getGraphql().getUser());
+        return userDTO;
     }
 }
