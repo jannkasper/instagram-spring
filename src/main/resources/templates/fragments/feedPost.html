@@ -177,11 +177,10 @@
 
 <div th:class="feedItemCommentContainer" th:fragment="comment">
     <link th:href="@{/css/feedPost/comment.css}" rel="stylesheet" />
-
     <div th:class="commentContent">
         <a th:class="commentUserName" th:href="${'/' + owner.username}" th:text="${owner.username}">username</a>
-        <span th:id="${'comment-' + id}" th:text="${text.length > 120 ? text.substring(0, text.lastIndexOf(' ', 120)) + '...' : text}"></span>
-        <span th:id="${'commentShowMore-' + id}" th:if="${text.length > 120}" th:class="showMore" th:attr="onclick='handleShowMore(\'' + ${id} + '\', `' + ${text} + '`)'"> more</span>
+        <span th:id="${'comment-' + id}" th:utext="${@formatter.hashtagFormatter(text.length > 120 ? text.substring(0, text.lastIndexOf(' ', 120)) + '...' : text)}"></span>
+        <span th:id="${'commentShowMore-' + id}" th:if="${text.length > 120}" th:class="showMore" th:attr="onclick='handleShowMore(\'' + ${id} + '\', `' + ${@formatter.hashtagFormatter(text)} + '`)'"> more</span>
     </div>
     <div th:if="${feedDescription != true}">
         <svg aria-label="Like" fill="#262626" height="12" viewBox="0 0 48 48" width="12">
@@ -193,7 +192,7 @@
         function handleShowMore (id, text) {
             console.log(id, text)
             var comment = document.getElementById("comment-" + id);
-            comment.textContent = text;
+            comment.innerHTML = text;
 
             var commentShowMore = document.getElementById("commentShowMore-" + id);
             commentShowMore.style.display = "none";

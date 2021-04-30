@@ -10,6 +10,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.regex.MatchResult;
+import java.util.regex.Pattern;
 
 @Component
 public class Formatter {
@@ -71,5 +73,33 @@ public class Formatter {
     @Bean
     public String bioFormatter(@Value("") String bio) {
         return bio.replaceAll("\n", "<br/>");
+    }
+
+    @Bean
+    public String hashtagFormatter(@Value("") String text) {
+        if (text == null || text.isEmpty()) {
+            return text;
+        }
+
+        String[] hashArray = Pattern.compile("#(\\w+)").matcher(text).results()
+                .map(MatchResult::group)
+                .toArray(String[]::new);
+
+        for(String hash : hashArray) {
+            text = text.replaceAll(hash + "\\b", "<a href=\"/tags/" + hash.substring(1) + "\" style=\"color:#00376b\">" + hash + "</a>");
+        }
+
+        String[] userArray = Pattern.compile("@(\\w+)").matcher(text).results()
+                .map(MatchResult::group)
+                .toArray(String[]::new);
+
+        for(String user : userArray) {
+            System.out.println(user);
+            text = text.replaceAll( user + "\\b", "<a href=\"/" + user.substring(1) + "\" style=\"color:#00376b\">" + user + "</a>");
+        }
+
+        text = text.replaceAll("\n", "</br>");
+
+        return text;
     }
 }
