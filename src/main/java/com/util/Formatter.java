@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.net.URI;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -18,8 +19,8 @@ public class Formatter {
 
     @Bean
     public String numCommaFormatter(@Value("0") Integer num) {
-        if (num == 0) {
-            return null;
+        if (num == null || num < 0) {
+            return "";
         }
 
         DecimalFormat formatter = new DecimalFormat("#,###");
@@ -53,9 +54,13 @@ public class Formatter {
 
     @Bean
     public String numFormatter(@Value("0") Integer num) {
+        if (num == null || num < 0) {
+            return "";
+        }
+
         if (num > 999 && num < 1000000) {
             return String.format("%.1fk", ((float)num)/1000); // convert to K for number from > 1000 < 1 million
-        }else if(num > 1000000){
+        }else if(num >= 1000000){
             return String.format("%.1fM", ((float)num)/1000000); // convert to M for number from > 1 million
         }
         return num.toString(); // if value < 1000, nothing to do
@@ -64,14 +69,19 @@ public class Formatter {
     @Bean
     public String urlFormatter(@Value("") String url) {
         try {
-            URI uri = new URI(url);
+            URL u = new URL(url);
+            URI uri = u.toURI();
             return uri.getHost();
-        } catch (Exception e) { }
-        return url;
+        } catch (Exception e) {
+            return "";
+        }
     }
 
     @Bean
     public String bioFormatter(@Value("") String bio) {
+        if (bio == null) {
+            return "";
+        }
         return bio.replaceAll("\n", "<br/>");
     }
 
@@ -94,7 +104,6 @@ public class Formatter {
                 .toArray(String[]::new);
 
         for(String user : userArray) {
-            System.out.println(user);
             text = text.replaceAll( user + "\\b", "<a href=\"/" + user.substring(1) + "\" style=\"color:#00376b\">" + user + "</a>");
         }
 
